@@ -1,6 +1,5 @@
 body{
     margin: 0;
-    height: 100vh;
     background-color: black;
 }
 
@@ -31,7 +30,7 @@ nav a{
 .jumbotron{
     background-image: url(picture/lamp.jpg);
     background-size: cover;
-    height: 95%;
+    height: 630px;
     display: flex;
     justify-content: center;
     align-items: center;
