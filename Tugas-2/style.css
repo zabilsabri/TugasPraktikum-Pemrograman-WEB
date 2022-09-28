@@ -8,7 +8,6 @@ h1, h2, p, a, h3 {
 }
 
 nav{
-    overflow: hidden;
     background-color: rgb(20, 20, 20);
     display: flex;
     align-items: center;
@@ -45,28 +44,27 @@ nav a{
     display: flex;
     justify-content: center;
     flex-direction: row;
-    height: 340px;
 }
 
 .description-text{
     width: 500px; 
-    float:left; 
-    height:100px; 
-    margin:10px
+    margin:10px;
 }
 .title{
     text-align: center;
 }
 
-.galeri{
-    display: flex;
+img{
+    width:100%;
+    height: auto;
 }
 
-img{
-    width: 250px;
+.galeri{
+    display: flex;
+    width: auto;
+    align-items: baseline;
 }
 
 .container{
-    margin: 5px;
     text-align: center;
 }
