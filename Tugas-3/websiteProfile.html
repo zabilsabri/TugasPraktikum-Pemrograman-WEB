@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="style.css">
     <title>Bootstrap</title>
 </head>
-<body>
+<body class="text-white">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
@@ -71,9 +71,9 @@
             </button>
         </div>
     </div>
-    <h1 class="title" id="deskripsi">DESKRIPSI</h1>
+    <h1 class="text-center mt-5 mb-4" id="deskripsi">DESKRIPSI</h1>
 
-    <div class="container">
+    <div class="container text-white">
         <div class="row">
             <div class="col">
                 <p>Lampu adalah sebuah peranti yang menghasilkan cahaya. Kata "lampu" dapat juga berarti bola lampu. 
@@ -104,104 +104,91 @@
         </div>
     </div>
 
-    <h1 class="title" id="skill">Skill</h1>
-    <div class="skill">
-        <div class="container ">
-            <div class="row d-flex">
-                <div class="col-md-3">
-                    <button type="button" class="btn btn-primary">
-                        Web Design <span class="badge text-bg-secondary">3</span>
-                    </button>
-                    <ul>
-                        <li>HTML</li>
-                        <li>CSS</li>
-                        <li>Bootstrap</li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-                    <button type="button" class="btn btn-primary">
-                        Backend <span class="badge text-bg-secondary">4</span>
-                    </button>
-                    <ul>
-                        <li>PHP</li>
-                        <li>JavaScript</li>
-                        <li>Java</li>
-                        <li>Python</li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-                    <button type="button" class="btn btn-primary">
-                        Database <span class="badge text-bg-secondary">1</span>
-                    </button>
-                    <ul>
-                        <li>MySql</li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-                    <button type="button" class="btn btn-primary">
-                        Notification <span class="badge text-bg-secondary">1</span>
-                    </button>
-                    <ul>
-                        <li>GIT</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+    <h1 class="text-center mt-5 mb-4" id="skill">SKILL</h1>
+    <div class="d-flex justify-content-evenly">
+      <div class="box">
+        <button type="button" class="btn btn-light">
+          Web Design <span class="badge text-bg-secondary">3</span>
+        </button>
+        <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>Bootstrap</li>
+        </ul>
+      </div>
+      <div class="box">
+        <button type="button" class="btn btn-light">
+          Backend <span class="badge text-bg-secondary">4</span>
+        </button>
+        <ul>
+            <li>PHP</li>
+            <li>JavaScript</li>
+            <li>Java</li>
+            <li>Python</li>
+        </ul>
+      </div>
+
+      <div class="box">
+        <button type="button" class="btn btn-light">
+          Database <span class="badge text-bg-secondary">1</span>
+        </button>
+        <ul>
+            <li>MySql</li>
+        </ul>
+      </div>
+
+      <div class="box">
+      <button type="button" class="btn btn-light">
+        Version Control System <span class="badge text-bg-secondary">1</span>
+      </button>
+      <ul>
+          <li>GIT</li>
+      </ul>
+      </div>
     </div>
 
-    <div class="title" id="jenisLampu">
-        <h1>GALERI</h1>
-    </div>
-        <div class="row row-cols-1 row-cols-md-4 g-2">
-            <div class="col-md-3">
-            <div class="card bg-dark h-100">
-                <img src="picture/lampu led.png" class="card-img-top" alt="lampu led">
-                <div class="card-body">
-                <h5 class="card-title">Lampu LED</h5>
-                <p class="card-text">lampu ini sering digunakan untuk pencahayaan kendaraan bermotor. Mantap</p>
-                </div>
-            </div>
-            </div>
-            <div class="col-md-3">
-            <div class="card bg-dark h-100">
-                <img src="picture/lampu neon.png" class="card-img-top" alt="lampu neon">
-                <div class="card-body">
-                <h5 class="card-title">Lampu Neon</h5>
-                <p class="card-text">Gas dalam lampu ini bisa menghasilkan warna yang berbeda-beda, maka dari itu kerap dijadikan sebagai lampu hias.</p>
-                </div>
-            </div>
-            </div>
-            <div class="col-md-3">
-            <div class="card bg-dark h-100">
-                <img src="picture/lampu pijar.png" class="card-img-top" alt="lampu pijar">
-                <div class="card-body">
-                <h5 class="card-title">Lampu Pijar</h5>
-                <p class="card-text">Lampu pijar sangat cocok digunakan untuk kamu yang ingin menciptakan nuansa klasik dan hangat pada rumah.</p>
-                </div>
-            </div>
-            </div>
-            <div class="col">
-            <div class="card bg-dark h-100">
-                <img src="picture/lampu uap natrium.png" class="card-img-top" alt="lampu uap natrium">
-                <div class="card-body">
-                <h5 class="card-title">Lampu Uap Natrium</h5>
-                <p class="card-text">Lampu uap natrium merupakan lampu yang kerap digunakan untuk penerangan jalan atau pada peralatan tertentu.</p>
-                </div>
-            </div>
-            </div>
-        </div>
+    <hr>
 
-        <!-- Footer -->
+    <div id="jenisLampu">
+        <h1 class="text-center mt-5 mb-4" id="jenisLampu">GALERI</h1>
+    </div>
+    
+    <div class="d-flex align-items-baseline">
+      <div class="card bg-transparent">
+        <img src="picture/lampu led.png" class="card-img-top w-75 mx-auto" alt="lampu led">
+        <div class="card-body">
+        <h5 class="card-title text-center">Lampu LED</h5>
+        <p class="card-text">lampu ini sering digunakan untuk pencahayaan kendaraan bermotor. Mantap</p>
+        </div>
+      </div>
+      <div class="card bg-transparent">
+        <img src="picture/lampu neon.png" class="card-img-top w-75 mx-auto" alt="lampu neon">
+        <div class="card-body">
+        <h5 class="card-title text-center">Lampu Neon</h5>
+        <p class="card-text">Gas dalam lampu ini bisa menghasilkan warna yang berbeda-beda, maka dari itu kerap dijadikan sebagai lampu hias.</p>
+        </div>
+      </div>
+      <div class="card bg-transparent">
+        <img src="picture/lampu pijar.png" class="card-img-top w-75 mx-auto" alt="lampu pijar">
+        <div class="card-body">
+        <h5 class="card-title text-center">Lampu Pijar</h5>
+        <p class="card-text">Lampu pijar sangat cocok digunakan untuk kamu yang ingin menciptakan nuansa klasik dan hangat pada rumah.</p>
+        </div>
+      </div>
+      <div class="card bg-transparent">
+        <img src="picture/lampu uap natrium.png" class="card-img-top w-75 mx-auto" alt="lampu uap natrium">
+        <div class="card-body">
+        <h5 class="card-title text-center">Lampu Uap Natrium</h5>
+        <p class="card-text">Lampu uap natrium merupakan lampu yang kerap digunakan untuk penerangan jalan atau pada peralatan tertentu.</p>
+        </div>
+      </div>
+    </div>
+
     <footer class="text-center text-lg-start bg-dark text-muted" id="contactUs" style="margin-top: 20px;">
-    <!-- Section: Social media -->
     <section class="alert alert-dark d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-      <!-- Left -->
       <div class="me-5 d-none d-lg-block">
         <span>Get connected with us on social networks:</span>
       </div>
-      <!-- Left -->
-  
-      <!-- Right -->
       <div>
         <a href="" class="me-4 text-reset">
             <i class="fab fa-facebook-f"></i>
@@ -222,18 +209,11 @@
             <i class="fab fa-github"></i>
         </a>
       </div>
-      <!-- Right -->
     </section>
-    <!-- Section: Social media -->
-  
-    <!-- Section: Links  -->
-    <section class="">
+    <section class="text-white">
       <div class="container text-center text-md-start mt-5">
-        <!-- Grid row -->
         <div class="row mt-3">
-          <!-- Grid column -->
           <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-            <!-- Content -->
             <h6 class="text-uppercase fw-bold mb-4">
               <i class="fas fa-gem me-3 text-secondary"></i>Contact</h6>
               <div class="mb-3">
@@ -241,17 +221,14 @@
                 <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@gmail.com">
               </div>
               <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+                <label for="exampleFormControlTextarea1" class="form-label">Requirement</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
               </div>
               <button type="button" class="btn btn-light">Send</button>
-
           </div>
-          <!-- Grid column -->
           
-          <!-- Grid column -->
+          
           <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-            <!-- Links -->
             <h6 class="text-uppercase fw-bold mb-4">
               Products
             </h6>
@@ -268,11 +245,8 @@
               <a href="#!" class="text-reset">Lampu Uap Natrium</a>
             </p>
           </div>
-          <!-- Grid column -->
   
-          <!-- Grid column -->
           <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-            <!-- Links -->
             <h6 class="text-uppercase fw-bold mb-4">
               Useful links
             </h6>
@@ -289,11 +263,8 @@
               <a href="#!" class="text-reset">Help</a>
             </p>
           </div>
-          <!-- Grid column -->
   
-          <!-- Grid column -->
           <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-            <!-- Links -->
             <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
             <p><i class="fas fa-home me-3 text-secondary"></i>Makassar, Jl. Pettarani</p>
             <p>
@@ -303,20 +274,13 @@
             <p><i class="fas fa-phone me-3 text-secondary"></i>08114613767</p>
             <p><i class="fas fa-print me-3 text-secondary"></i>869761</p>
           </div>
-          <!-- Grid column -->
         </div>
-        <!-- Grid row -->
       </div>
     </section>
-    <!-- Section: Links  -->
-  
-    <!-- Copyright -->
     <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
       © 2021 Copyright:
       <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
     </div>
-    <!-- Copyright -->
-  </footer>
-  <!-- Footer -->
+  </footer>   
 </body>
 </html>
