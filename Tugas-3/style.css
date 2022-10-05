@@ -1,0 +1,35 @@
+body{
+    margin: 0;
+    background-color: black;
+}
+
+h1, h2, p, a, h5, li {
+    color: white;
+}
+
+.description{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.title{
+    text-align: center;
+}
+
+.card-img-top{
+    object-fit: contain;
+    height: 300px;
+}
+
+.card-title{
+    text-align: center;
+}
+
+.jumbotron{
+    height: auto;
+}
+
+li{
+    text-align: left;
+}
