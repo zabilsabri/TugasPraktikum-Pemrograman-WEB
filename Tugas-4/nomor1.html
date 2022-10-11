@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="output"></p>
+
+<script>
+    let input = prompt("Masukkan angka dalam angka");
+    if (input > 25) {
+        document.getElementById("output").innerHTML = "Hari ini panas karena cuaca: " + input;
+    } else if (input >= 15 && input <= 25){
+        document.getElementById("output").innerHTML = "Hari ini hangat karena cuaca: " + input;
+    } else if (input >= 1 && input < 15){
+        document.getElementById("output").innerHTML = "Hari ini dingin karena cuaca: " + input;
+    } else {
+        let confirm = prompt("Yakin Keluar? Ketik Yes atau No");
+        if (confirm == "Yes") {
+            document.getElementById("output").innerHTML = "Hari ini sangat dingin, Hati - hati di jalan";
+        } else if (confirm == "No"){
+            document.getElementById("output").innerHTML = "Jangan Lupa Untuk Tetap Kerja di rumah";
+        }
+    }
+</script>
+
+</body>
+</html>
