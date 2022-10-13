@@ -9,15 +9,17 @@
 <body>
     <script>
         var input = prompt("Masukkan kalimat: ");
-        var array = input.split('');
+        var array = input.split("");
         array.sort();
+        console.log(array.sort());
         var counter = 1;
         for(let i = 0; i < array.length; i++){
             if(array[i] == array[i + 1]){
-                counter ++;
+                counter += 1;
             } else {
                 if (array[i] == " ") {
-                    console.log("Spasi" + " = " + counter);
+                    console.log("Spasi = " + counter);
+                    counter = 1;
                 } else {
                     console.log(array[i] + " = " + counter);
                     counter = 1;

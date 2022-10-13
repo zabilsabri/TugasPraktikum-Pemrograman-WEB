@@ -9,15 +9,19 @@
 <body>
     <script>
         var input = prompt("Perkalian berapa: ");
-        var batas = prompt("Ingin dikalikan sampai berapa: ")
         var totalSemua = 0;
-        if(typeof input === 'number' || typeof batas === 'number'){
-            for (let i = 1; i <= batas; i++){
-                let total = i * input;
-                console.log(i + " x " + input +" = " + total);
-                totalSemua += total;
+        if(!isNaN(input)){
+            var batas = prompt("Ingin dikalikan sampai berapa: ");
+            if (!isNaN(batas)) {
+                for (let i = 1; i <= batas; i++){
+                    let total = i * input;
+                    console.log(i + " x " + input +" = " + total);
+                    totalSemua += total;
+                }
+                console.log("Hasil seluruh perkalian: " + totalSemua);
+            } else {
+                console.log("inputan kamu bukan angka!");
             }
-            console.log("Hasil seluruh perkalian: " + totalSemua);
         } else {
         console.log("inputan kamu bukan angka!");
         }
