@@ -14,8 +14,33 @@ body{
     height: auto;
     display: flex;
     flex-direction: column;
-    align-items: center;
     color: white;
     padding: 15px;
+    justify-content: center;
+}
+
+.randomCard{
+    margin-left: 10px;
+}
+
+.money{
+    display: flex;
+    flex-direction: row;
+}
+
+.yourCard, .randomCard{
+    display: flex;
+    flex-direction: row;
+}
+
+.containerInside{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
 }
 

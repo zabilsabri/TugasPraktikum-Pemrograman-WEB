@@ -10,20 +10,30 @@
 </head>
 <body>
     <div class="container">
-        <h1>BlackJack</h1>
-        <h5 class="mb-5">Play a Round?</h5>
-        <h5>Your Cards:</h5>
-        <h5 id="yourCards" class="mb-4"></h5>
-        <h5>Sum:</h5>
-        <h5 id="yourSum"></h5>
-        <div class="d-grid gap-2 d-md-block mb-5">
-            <button class="btn btn-warning" type="button">Start Game</button>
-            <button class="btn btn-secondary" type="button">Take Card</button>
+        <div class="containerInside">
+            <h1>BlackJack</h1>
+            <h5 class="mb-5">Play a Round?</h5>
+            <h5>Your Cards:</h5>
+            <div class="yourCard mb-3" id="yourCard">
+
+            </div>
+            <h5>Sum:</h5>
+            <h5 id="yourSum"></h5>
+            <div class="d-grid gap-2 d-md-block mb-5">
+                <button class="btn btn-warning" onclick="startGame()" id="startGameButton" type="button">Start Game</button>
+                <button class="btn btn-secondary" onclick="takeCard()" type="button">Take Card</button>
+                <h4 id="warning" style="color: orange;"></h4>
+            </div>
+            <h5>Your Money:</h5>
+            <div class="money">
+                <h5>Rp. <h5 id="yourMoney">5000</h5> </h5> 
+            </div>
         </div>
-        <h5>Your Money:</h5>
-        <h5 id="yourMoney">Rp. 5000</h5>
-        <input class="form-control form-control-sm mb-3" id="bet" type="text" placeholder="Set Your Bet" aria-label=".form-control-sm example">
-        <button type="button" class="btn btn-warning">Reset Money</button>
+        <form>
+            <input class="form-control form-control-sm mb-3" id="bet" type="number" placeholder="Set Your Bet" aria-label=".form-control-sm example">
+            <button class="btn btn-warning" onclick="reset()" type="button">Reset</button>
+        </form>
     </div>
+    <script src="backend.js" ></script>
 </body>
 </html>
