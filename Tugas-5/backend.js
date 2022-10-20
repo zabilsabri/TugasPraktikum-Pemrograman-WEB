@@ -55,7 +55,7 @@ function startGame() {
 }
 
 function takeCard() {
-    if (total != 0) {
+    if (total != 0 && total < 21) {
         var newcard =  Math.floor(Math.random() * 11) + 1;
         card.push(newcard);
         test.append(`${newcard} `);
@@ -70,7 +70,9 @@ function takeCard() {
             money = money + (inputBet * 6);
             document.getElementById('yourMoney').innerHTML = money;
         }
+    } else if (inputBet == "") {
+        alert("Set Your Bet First!");
     } else {
-        alert("Set Your Ber First!");
+        alert("Press Play Again Button!")
     }
 }
