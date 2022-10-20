@@ -1,9 +1,8 @@
 var money = 5000;
-var total;
+var total = 0;
 var inputBet;
 var card = [];
 var test = document.getElementsByClassName("yourCard")[0];
-console.log(test);
 
 
 function startGame() {
@@ -12,38 +11,66 @@ function startGame() {
     if (inputBet == ""){
         alert("Set Your Bet First");
     } else if (inputBet <= money && inputBet > 0) {
-        money = money - inputBet;
-        document.getElementById('yourMoney').innerHTML = money;
-        console.log(money);
-
-        if (card.length != 2){
-            for (var i = 0; i < 2; i++){
-                var randNum = Math.floor(Math.random() * 11) + 1;
-                card.push(randNum);
-                console.log(card);
+        if (total < 21) {
+            console.log(total);
+            if (card.length < 2){
+                for (var i = 0; i < 2; i++){
+                    var randNum = Math.floor(Math.random() * 11) + 1;
+                    card.push(randNum);
+                    document.getElementById("startGameButton").innerText = "Play Again?";
+                }
+                for (var j = 0; j < card.length; j++){
+                    var cards = `${card[j]} `;
+                    test.append(cards);
+                    console.log(cards);
+                    total += card[j];
+                    document.getElementById("yourSum").innerHTML = total;
+                    console.log(total);
+                }
+                if (total > 21) {
+                    document.getElementById("warning").innerHTML = "Game Over You Lose!";
+                    document.getElementById("yourSum").innerHTML = total;
+                } else if (total == 21){
+                    document.getElementById("warning").innerHTML = "You Got BlackJack!"
+                    document.getElementById("yourSum").innerHTML = total;
+                    money = money + (inputBet * 6);
+                    document.getElementById('yourMoney').innerHTML = money;
+                }
+                money = money - inputBet;
+                document.getElementById('yourMoney').innerHTML = money;
             }
-
-            for (var j = 0; j < card.length; j++){
-                let cards = `${card[j]} `;
-                test.append(cards);
-            }
-
+        } else {
+            card = [];
+            total = 0;
+            test.append(card);
+            test.innerHTML = "";
+            document.getElementById("startGameButton").innerText = "Start Game"
+            document.getElementById("yourSum").innerHTML = "";
+            document.getElementById("warning").innerHTML = "";
         }
+
     } else {
         alert("Input Your Correct Amount of Money!");
     }
 }
 
-function takeCard() {  
-    var newcard =  Math.floor(Math.random() * 11) + 1;
-    card.push(newcard);
-    
-    for (var j = 0; j < card.length; j++){
-        let cards = `${card[j]} `;
-        test.append(cards);
+function takeCard() {
+    if (total != 0) {
+        var newcard =  Math.floor(Math.random() * 11) + 1;
+        card.push(newcard);
+        test.append(`${newcard} `);
+        total += newcard;
+        document.getElementById("yourSum").innerHTML = total;
+        if (total > 21) {
+            document.getElementById("warning").innerHTML = "Game Over You Lose!";
+            document.getElementById("yourSum").innerHTML = total;
+        } else if (total == 21){
+            document.getElementById("warning").innerHTML = "You Got BlackJack!"
+            document.getElementById("yourSum").innerHTML = total;
+            money = money + (inputBet * 6);
+            document.getElementById('yourMoney').innerHTML = money;
+        }
+    } else {
+        alert("Set Your Ber First!");
     }
-    console.log(card);
-}
-function reset(){
-    document.getElementById("yourMoney").innerHTML = "5000";
 }
