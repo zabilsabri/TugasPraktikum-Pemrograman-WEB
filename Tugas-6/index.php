@@ -21,7 +21,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" data-bs-toggle="modal" data-bs-target="#tambahDataMahasiswa" href="#">+ Tambah Mahasiswa</a>
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#tambahDataMahasiswa">
+                        + Tambah Mahasiswa
+                    </button>
                     </li>
                 </ul>
                 <form class="d-flex" method="GET" action="index.php" role="search">
@@ -55,22 +57,29 @@
                 <?php
                 include 'connection.php';
 
-                if(isset($_GET['search'])){
-                    $dataMahasiswa = mysqli_query($conn, "select * from `data` where CONCAT(NIM, Nama, Alamat, Fakultas) like '%" .$_GET['search']. "%'");
-                } else {
-                    $dataMahasiswa = mysqli_query($conn, "select * from `data`");
-                }
-                
-                $jumlahRow = mysqli_num_rows($dataMahasiswa);
+                $batas = 2;
+                $halaman = @$_GET['halaman'];
 
-                $nomor = 1;
+                if(empty($halaman)){
+                    $posisi = 0;
+                    $halaman = 1;
+                } else {
+                    $posisi = ($halaman-1) * $batas;
+                }
+
+                if(isset($_GET['search'])){
+                    $dataMahasiswa = mysqli_query($conn, "select * from `data` where CONCAT(NIM, Nama, Alamat, Fakultas) like '%" .$_GET['search']. "%' limit '$posisi', '$batas'");
+                } else {
+                    $dataMahasiswa = mysqli_query($conn, "select * from `data` limit $posisi, $batas");
+                }
+
+                $nomor = 1 + $posisi;
 
                 while($rowDataMahasiswa = mysqli_fetch_array($dataMahasiswa)){
                     $nim = $rowDataMahasiswa['NIM'];
                     $nama = $rowDataMahasiswa['Nama'];
                     $alamat = $rowDataMahasiswa['Alamat'];
                     $fakultas = $rowDataMahasiswa['Fakultas'];
-
                 ?>
                 <tr>
                     <th scope="row"><?php echo $nomor++ ?></th>
@@ -96,7 +105,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                Hapus Data <?php echo $nama ?> ?
+                                Hapus Data <?php echo $nim ?> ?
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -108,7 +117,7 @@
 
                 <!--------------------MODAL Edit Data Mahasiswa----------------------------------->
 
-                <div class="modal fade" id="editDataMahasiswa<?= $rowDataMahasiswa['NIM'] ?>" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+                <div class="modal fade" id="editDataMahasiswa<?= $nim ?>" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-scrollable">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -116,30 +125,30 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="editData.php?nim=<?= $nim ?>" method="POST">
+                                <form action="editData.php?nim=<?= $nim ?>?halaman<?= $halaman ?>" method="POST">
                                     <div class="mb-3 row">
                                         <label for="inputPassword" class="col-sm-2 col-form-label">Nim</label>
                                         <div class="col-sm-10">
-                                            <input type="text" value="<?php echo $rowDataMahasiswa['NIM'] ?>" class="form-control" name="NIM" required>
+                                            <input type="text" value="<?php echo $nim ?>" class="form-control" name="NIM" required>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
                                         <label for="inputPassword" class="col-sm-2 col-form-label">Nama</label>
                                         <div class="col-sm-10">
-                                            <input type="text" value="<?php echo $rowDataMahasiswa['Nama'] ?>" class="form-control" name="Nama" required>
+                                            <input type="text" value="<?php echo $nama ?>" class="form-control" name="Nama" required>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
                                         <label for="inputPassword" class="col-sm-2 col-form-label">Alamat</label>
                                         <div class="col-sm-10">
-                                            <input type="text" value="<?php echo $rowDataMahasiswa['Alamat'] ?>" class="form-control" name="Alamat" required>
+                                            <input type="text" value="<?php echo $alamat ?>" class="form-control" name="Alamat" required>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
                                         <label for="inputPassword" class="col-sm-2 col-form-label">Fakultas</label>
                                         <div class="col-sm-10">
                                         <select class="form-select" name="Fakultas" aria-label="Default select example" required>
-                                            <option selected><?php echo $rowDataMahasiswa['Fakultas'] ?></option>
+                                            <option selected><?php echo $fakultas ?></option>
                                             <option value="Ekonomi & Bisnis">Ekonomi & Bisnis</option>
                                             <option value="Hukum">Hukum</option>
                                             <option value="Kedokteran">Kedokteran</option>
@@ -168,7 +177,29 @@
                 <?php } ?>
             </tbody>
         </table>
+        <?php
+            
+            $sqlPage = mysqli_query($conn, "select * from `data`");
+            $jumlahData = mysqli_num_rows($sqlPage);
+            $jumlahHalaman = ceil($jumlahData/$batas);
+
+        ?>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <?php
+                for ($i = 1; $i <= $jumlahHalaman ; $i++){
+                    if($i != $halaman){
+                        echo "<li class='page-item'><a class='page-link' href=\"index.php?halaman=$i\">$i</a></li>";
+                    } else {
+                        echo "<li class='page-item active'><a class='page-link'>$i</a></li>";
+                    }
+                }
+                ?>
+            </ul>
+        </nav>
     </div>
+
 
     <!--------------------MODAL Tambah Data Mahasiswa----------------------------------->
 
@@ -180,7 +211,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="inputData.php" method="POST">
+                    <form action="inputData.php?halaman=<?= $halaman ?>" method="POST">
                         <div class="mb-3 row">
                             <label for="inputPassword" class="col-sm-2 col-form-label">Nim</label>
                             <div class="col-sm-10">
