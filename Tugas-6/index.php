@@ -26,7 +26,7 @@
                     </button>
                     </li>
                 </ul>
-                <form class="d-flex" method="GET" action="index.php" role="search">
+                <form class="d-flex" method="GET" action="" role="search">
                     <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-dark" type="submit">Search</button>
                 </form>
@@ -36,12 +36,35 @@
     </div>
 
     <div class="d-flex justify-content-center flex-column align-items-center mt-5">
+
         <?php if(isset($_GET['exist'])){ ?>
             <div class="alert alert-danger alert-dismissible fade show w-75" role="alert">
                 <strong>Mahasiswa Dengan NIM Tersebut Sudah Ada!</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         <?php } ?>
+
+        <?php if(isset($_GET['editSuccess'])){ ?>
+            <div class="alert alert-success alert-dismissible fade show w-75" role="alert">
+                <strong>Data Berhasil Di Edit!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php } ?>
+
+        <?php if(isset($_GET['success'])){ ?>
+            <div class="alert alert-success alert-dismissible fade show w-75" role="alert">
+                <strong>Data Berhasil Di Tambahkan!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php } ?>
+
+        <?php if(isset($_GET['deleteSuccess'])){ ?>
+            <div class="alert alert-success alert-dismissible fade show w-75" role="alert">
+                <strong>Data Berhasil Di Hapus!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php } ?>
+
         <table class="table w-75">
             <thead>
                 <tr>
@@ -57,7 +80,7 @@
                 <?php
                 include 'connection.php';
 
-                $batas = 2;
+                $batas = 6;
                 $halaman = @$_GET['halaman'];
 
                 if(empty($halaman)){
@@ -68,7 +91,7 @@
                 }
 
                 if(isset($_GET['search'])){
-                    $dataMahasiswa = mysqli_query($conn, "select * from `data` where CONCAT(NIM, Nama, Alamat, Fakultas) like '%" .$_GET['search']. "%' limit '$posisi', '$batas'");
+                    $dataMahasiswa = mysqli_query($conn, "select * from `data` where CONCAT(NIM, Nama, Alamat, Fakultas) like '%" .$_GET['search']. "%' limit $posisi, $batas");
                 } else {
                     $dataMahasiswa = mysqli_query($conn, "select * from `data` limit $posisi, $batas");
                 }
@@ -125,7 +148,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="editData.php?nim=<?= $nim ?>?halaman<?= $halaman ?>" method="POST">
+                                <form action="editData.php?nim=<?= $nim ?>&halaman<?= $halaman ?>" method="POST">
                                     <div class="mb-3 row">
                                         <label for="inputPassword" class="col-sm-2 col-form-label">Nim</label>
                                         <div class="col-sm-10">
@@ -179,20 +202,36 @@
         </table>
         <?php
             
-            $sqlPage = mysqli_query($conn, "select * from `data`");
-            $jumlahData = mysqli_num_rows($sqlPage);
-            $jumlahHalaman = ceil($jumlahData/$batas);
-
+            if(isset($_GET['search'])){
+                $search = $_GET['search'];
+                $sqlPage = mysqli_query($conn, "select * from `data` where CONCAT(NIM, Nama, Alamat, Fakultas) like '%" .$_GET['search']. "%'");
+                $jumlahData = mysqli_num_rows($sqlPage);
+                $jumlahHalaman = ceil($jumlahData/$batas);
+            } else {
+                $sqlPage = mysqli_query($conn, "select * from `data`");
+                $jumlahData = mysqli_num_rows($sqlPage);
+                $jumlahHalaman = ceil($jumlahData/$batas);
+            }
         ?>
 
         <nav aria-label="Page navigation example">
             <ul class="pagination">
                 <?php
-                for ($i = 1; $i <= $jumlahHalaman ; $i++){
-                    if($i != $halaman){
-                        echo "<li class='page-item'><a class='page-link' href=\"index.php?halaman=$i\">$i</a></li>";
-                    } else {
-                        echo "<li class='page-item active'><a class='page-link'>$i</a></li>";
+                if(isset($_GET['search'])){
+                    for ($i = 1; $i <= $jumlahHalaman ; $i++){
+                        if($i != $halaman){
+                            echo "<li class='page-item'><a class='page-link' href=\"index.php?halaman=$i&search=$search\">$i</a></li>";
+                        } else {
+                            echo "<li class='page-item active'><a class='page-link'>$i</a></li>";
+                        }
+                    }
+                } else {
+                    for ($i = 1; $i <= $jumlahHalaman ; $i++){
+                        if($i != $halaman){
+                            echo "<li class='page-item'><a class='page-link' href=\"index.php?halaman=$i\">$i</a></li>";
+                        } else {
+                            echo "<li class='page-item active'><a class='page-link'>$i</a></li>";
+                        }
                     }
                 }
                 ?>

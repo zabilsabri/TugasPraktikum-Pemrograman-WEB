@@ -15,13 +15,13 @@ if (isset($_POST['submit'])){
     if(!isset($row['NIM'])){
         $sql = "INSERT INTO `data` VALUES ('$nim', '$nama', '$alamat', '$fakultas')";
         if($conn->query($sql)){
-            header("location: index.php?halaman=$halaman");
+            header("location: index.php?halaman=$halaman&success");
         } else {
-            header('location: index.php?failed');
+            header('location: index.php?failed&halaman=1');
         };
     } else {
-        header('location: index.php?exist');
+        header('location: index.php?exist&halaman=1');
     }
 } else {
-    header('location: index.php');
+    header('location: index.php?keluar&halaman=1');
 }

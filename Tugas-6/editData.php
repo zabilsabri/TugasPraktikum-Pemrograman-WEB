@@ -12,9 +12,9 @@ if(isset($_POST['edit']) && isset($_GET['nim'])){
     if($nimDulu == $nim){
         $sql = "update `data` set NIM = '$nim', Nama = '$nama', Alamat = '$alamat', Fakultas = '$fakultas' where NIM = '$nimDulu'";
         if($conn->query($sql)){
-            header('location: index.php?success');
+            header('location: index.php?editSuccess&halaman=1');
         } else {
-            header('location: index.php?failed');
+            header('location: index.php?failed&halaman=1');
         };
     } else {
         $checkNIM = mysqli_query($conn, "select NIM from `data` where NIM = '$nim'");
@@ -23,15 +23,15 @@ if(isset($_POST['edit']) && isset($_GET['nim'])){
         if(!isset($rowCheckNIM)){
             $sql = "update `data` set NIM = '$nim', Nama = '$nama', Alamat = '$alamat', Fakultas = '$fakultas' where NIM = '$nimDulu'";
             if($conn->query($sql)){
-                header('location: index.php?success');
+                header('location: index.php?editSuccess&halaman=1');
             } else {
-                header('location: index.php?failed');
+                header('location: index.php?failed&halaman=1');
             };
         } else {
-            header('location: index.php?exist');
+            header('location: index.php?exist&halaman=1');
         }
     }
 
 } else {
-    header('location: index.php');
+    header('location: index.php?keluar&halaman=1');
 }
