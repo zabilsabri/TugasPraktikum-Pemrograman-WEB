@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Tugas 6</title>
 </head>
 <body>
     <nav class="navbar navbar-dark bg-dark">
@@ -62,6 +62,15 @@
             <div class="alert alert-success alert-dismissible fade show w-75" role="alert">
                 <strong>Data Berhasil Di Hapus!</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php } ?>
+
+        <?php if(isset($_GET['search'])){ 
+            $searchData = $_GET['search'];    
+        ?>
+            <div class="alert alert-success alert-dismissible fade show w-75" role="alert">
+                <strong>Data Yang Dicari ' <?php echo $searchData; ?> '</strong>
+                <a type="button" class="btn-close" aria-label="Close" href="index.php?halaman=1"></a>
             </div>
         <?php } ?>
 
