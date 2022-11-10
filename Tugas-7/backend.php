@@ -15,6 +15,7 @@ class Autentikasi{
                 
                 if ($row['Email'] == $email && $password == $row['Password']){
                     $_SESSION['login'] = true; 
+                    $_SESSION['nama'] = $row['Nama'];
                     header('location: index.php?halaman=1');
                 } else {
                     header('location: login.php?wrong');
@@ -24,24 +25,21 @@ class Autentikasi{
                 header('location: login.php?empty');
             };
             
-        } else {
-            header("location: login.php?notlogin");
         };
     }
 
     public function register(){
         if(isset($_POST['register'])){
-            $nama = $_POST['username'];
-            $password = password_hash($_POST['nis'], PASSWORD_DEFAULT);
+            $nama = $_POST['Nama'];
+            $email = $_POST['Email'];
+            $password = $_POST['Password'];
                 
-            $sqlc = mysqli_query($conn, "select NAMA from student_info where NAMA = '$nama'");
+            $sqlc = mysqli_query(mysqli_connect("localhost", "root", "", "mahasiswa", 3308), "select Email from account where Email = '$email'");
             $row = mysqli_fetch_array($sqlc);
         
-            
-        
-                if($row['NAMA'] != $nama){
-                    $sql = "insert into student_info (NAMA, NIS) values ('$nama', '$password')";
-                    if($conn->query($sql)){
+                if($row['Email'] != $email){
+                    $sql = "insert into account (Nama, Email, Password) values ('$nama', '$email','$password')";
+                    if(mysqli_connect("localhost", "root", "", "mahasiswa", 3308)->query($sql)){
                         header('location: login.php');
                     } else {
                         header('location: signUp.php?failed');
@@ -53,6 +51,12 @@ class Autentikasi{
         } else {
             header('location: signUp.php?notLogin');
         };
+    }
+
+    public function logout(){
+        session_destroy();
+
+        header('location: login.php');
     }
 }
 
@@ -145,4 +149,12 @@ if(isset($_GET['nim']) && isset($_GET['editDataMahasiswa'])){
 
 if(isset($_GET['login'])){
     $autentikasi->login();
+}
+
+if(isset($_GET['signUp'])){
+    $autentikasi->register();
+}
+
+if(isset($_GET['logout'])){
+    $autentikasi->logout();
 }

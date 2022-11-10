@@ -1,3 +1,11 @@
+<?php
+session_start();
+if(!isset($_SESSION['login'])){
+    header('location: login.php?notlogin');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +19,13 @@
 <body>
     <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1">Tugas 7</span>
+            <span class="navbar-brand">Tugas 7</span>
+            <small>
+            <b>
+                <?php echo $_SESSION['nama'] ?>
+            </b>
+            </small>
+            <a class="btn btn-dark" href="backend.php?logout" role="button">LOGOUT</a>
         </div>
     </nav>
     <div class="heading">
@@ -156,7 +170,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="index.php?nim=<?= $nim ?>&halaman<?= $halaman ?>&editDataMahasiswa" method="POST">
+                                <form action="backend.php?nim=<?= $nim ?>&halaman<?= $halaman ?>&editDataMahasiswa" method="POST">
                                     <div class="mb-3 row">
                                         <label for="inputPassword" class="col-sm-2 col-form-label">Nim</label>
                                         <div class="col-sm-10">
@@ -258,7 +272,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="index.php?tambahDataMahasiswa" method="POST">
+                    <form action="backend.php?tambahDataMahasiswa" method="POST">
                         <div class="mb-3 row">
                             <label for="inputPassword" class="col-sm-2 col-form-label">Nim</label>
                             <div class="col-sm-10">

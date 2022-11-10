@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="loginStyle.css">
     <script src="https://kit.fontawesome.com/645f3ace4e.js" crossorigin="anonymous"></script>
     <title>LOGIN</title>
 </head>
@@ -23,7 +23,7 @@
             <?php } ?>
             
             <?php if(isset($_GET['wrong'])){ ?>
-                <b class="failed">Nama atau Nis Anda Salah!</b>
+                <b class="failed">Email atau Password Anda Salah!</b>
             <?php } ?>
             
             <?php if(isset($_GET['empty'])){ ?>
@@ -32,7 +32,7 @@
             
             <form action="backend.php?login" method="POST">
                 <div class="text-box">
-                    <input type="text" class="form-content" name="email" placeholder="Nama">
+                    <input type="text" class="form-content" name="email" placeholder="Email">
                 </div>
                 <div class="text-box">
                     <input type="password" class="form-content" id="password" name="password" placeholder="Password">
@@ -40,7 +40,6 @@
                         <i class="fas fa-eye-slash" onclick="showHide()" id="toogle"></i>
                     </div>
                 </div>
-                <a href="Fpassword.php" class="forget-password">Forget Account?</a>
                 <button type="submit" name="login" class="btn btn-dark">LOGIN</button>
             </form>
             <div class="footer-container">
