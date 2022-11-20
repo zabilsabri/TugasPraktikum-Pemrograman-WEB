@@ -10,6 +10,6 @@ class hapusDataMahasiswaController extends Controller
 {
     public function hapusDataMahasiswa($NIM){
         $deleted = DB::table('mahasiswas')->where('NIM','=', $NIM)->delete();
-        return redirect()->to('mahasiswa')->send()->with('success', 'Data berhasil di hapus!');
+        return redirect()->to('index')->send()->with('success', 'Data berhasil di hapus!');
     }
 }

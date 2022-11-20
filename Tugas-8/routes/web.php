@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\tambahMahasiswaController;
 use App\Http\Controllers\editDataMahasiswaController;
 use App\Http\Controllers\hapusDataMahasiswaController;
+use App\Http\Controllers\mahasiswaController;
+
 
 
 
@@ -18,11 +20,7 @@ use App\Http\Controllers\hapusDataMahasiswaController;
 |
 */
 
-Route::get('/mahasiswa', function () {
-    return view('index', [
-        'data' => DB::table('mahasiswas')->paginate(10)
-    ]);
-});
+Route::get('/index', [mahasiswaController::class, 'index']);
 
 Route::post('tambahMahasiswa', [tambahMahasiswaController::class, 'tambahMahasiswa']);
 

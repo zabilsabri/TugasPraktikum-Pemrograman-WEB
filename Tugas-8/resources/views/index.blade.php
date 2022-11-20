@@ -31,8 +31,8 @@
                     </button>
                     </li>
                 </ul>
-                <form class="d-flex" method="GET" action="" role="search">
-                    <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
+                <form class="d-flex" method="GET" action="index" role="search">
+                    <input class="form-control me-2" type="search" name="search" placeholder="Masukkan Nama" aria-label="Search">
                     <button class="btn btn-outline-dark" type="submit">Search</button>
                 </form>
                 </div>
@@ -70,7 +70,7 @@
         ?>
             <div class="alert alert-success alert-dismissible fade show w-75" role="alert">
                 <strong>Data Yang Dicari ' <?php echo $searchData; ?> '</strong>
-                <a type="button" class="btn-close" aria-label="Close" href="index.php?halaman=1"></a>
+                <a type="button" class="btn-close" aria-label="Close" href="index?page=1"></a>
             </div>
         <?php } ?>
 

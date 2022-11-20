@@ -23,13 +23,13 @@ class editDataMahasiswaController extends Controller
                 'Alamat'=>$request->input('Alamat'),
                 'Fakultas'=>$request->input('Fakultas')
             ]);
-            return redirect()->to('mahasiswa')->send()->with('success', 'Data berhasil di edit');
+            return redirect()->to('index')->send()->with('success', 'Data berhasil di edit');
         
         } 
         catch (\Illuminate\Database\QueryException $e){
             $errorCode = $e->errorInfo[1];
             if($errorCode == 1062){
-                return redirect()->to('mahasiswa')->send()->with('exist', 'Mahasiswa dengan NIM tersebut sudah ada!');
+                return redirect()->to('index')->send()->with('exist', 'Mahasiswa dengan NIM tersebut sudah ada!');
             }
         }
     }

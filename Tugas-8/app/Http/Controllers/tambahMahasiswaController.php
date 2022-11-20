@@ -23,7 +23,7 @@ class tambahMahasiswaController extends Controller
         ]);
 
         if($query){
-            return redirect()->to('mahasiswa')->send()->with('success', 'Data mahasiswa berhasil di tambahkan!');
+            return redirect()->to('index')->send()->with('success', 'Data mahasiswa berhasil di tambahkan!');
         } 
     }
 
