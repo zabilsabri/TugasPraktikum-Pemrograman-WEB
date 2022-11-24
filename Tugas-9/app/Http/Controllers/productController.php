@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\product;
+use App\Models\seller;
+use App\Models\category;
 use Illuminate\Support\Facades\DB;
 
 
@@ -11,16 +13,20 @@ class productController extends Controller
 {
 
     public function showProduct(){
-        return view('product', [
-            'data' => DB::table('products')->paginate(10)
-        ]);
+        $data = product::with('seller','category')->paginate(10);
+        $data1 = DB::table('sellers')->get();
+        $data2 = DB::table('categorys')->get();
+        return view('product')
+            ->with(compact('data'))
+            ->with(compact('data1'))
+            ->with(compact('data2'));
     }
 
     public function saveProductUseEloquent(Request $request){
         $request->validate([
             'name'=>'required',
-            'seller_id'=>'required',
-            'category_id'=>'required',
+            'seller name'=>'required',
+            'category name'=>'required',
             'price'=>'required',
             'status'=>'required',
         ]);
@@ -40,18 +46,18 @@ class productController extends Controller
     public function saveProductUseQueryBuilder(Request $request){
         $request->validate([
             'name'=>'required',
-            'seller_id'=>'required',
-            'category_id'=>'required',
+            'seller'=>'required',
+            'category'=>'required',
             'price'=>'required',
-            'status'=>'required'
+            'status'=>'required',
         ]);
         
         $query = DB::table('products')->insert([
             'name'=>$request->input('name'),
-            'seller_id'=>$request->input('seller_id'),
-            'category_id'=>$request->input('category_id'),
+            'seller_id'=>$request->input('seller'),
+            'category_id'=>$request->input('category'),
             'price'=>$request->input('price'),
-            'status'=>$request->input('status')
+            'status'=>$request->input('status'),
         ]);
 
         if($query){
@@ -62,8 +68,8 @@ class productController extends Controller
     public function editProductUseEloquent(Request $request, $id){
         $request->validate([
             'name'=>'required',
-            'seller_id'=>'required',
-            'category_id'=>'required',
+            'seller name'=>'required',
+            'category name'=>'required',
             'price'=>'required',
             'status'=>'required',
         ]);
@@ -84,16 +90,16 @@ class productController extends Controller
         
         $request->validate([
             'name'=>'required',
-            'seller_id'=>'required',
-            'category_id'=>'required',
+            'seller'=>'required',
+            'category'=>'required',
             'price'=>'required',
-            'status'=>'required'
+            'status'=>'required',
         ]);
 
         $query = DB::table('products')->where('id', $id)->update([
             'name'=>$request->input('name'),
-            'seller_id'=>$request->input('seller_id'),
-            'category_id'=>$request->input('category_id'),
+            'seller_id'=>$request->input('seller'),
+            'category_id'=>$request->input('category'),
             'price'=>$request->input('price'),
             'status'=>$request->input('status')
         ]);
@@ -102,12 +108,12 @@ class productController extends Controller
         }
     }
 
-    public function deleteUseEloquent($id){
+    public function deleteProductUseEloquent($id){
         $product = product::where('id',$id)->delete();
         return redirect()->to('products')->send()->with('success', 'Data berhasil di hapus!');
     }
 
-    public function deleteUseQueryBuilder($id){
+    public function deleteProductUseQueryBuilder($id){
         $deleted = DB::table('products')->where('id','=', $id)->delete();
         return redirect()->to('products')->send()->with('success', 'Data berhasil di hapus!');
     }

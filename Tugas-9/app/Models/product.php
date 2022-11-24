@@ -9,12 +9,13 @@ class product extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+    protected $fillable = ['id', 'name', 'seller_id', 'category_id', 'price', 'status'];
 
     public function seller(){
         return $this->belongsTo(seller::class);
     }
 
     public function category(){
-        return $this->hasOne(category::class);
+        return $this->belongsTo(category::class);
     }
 }

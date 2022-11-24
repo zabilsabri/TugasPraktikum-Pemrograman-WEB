@@ -22,7 +22,8 @@ return new class extends Migration
             $table->foreign('category_id')->references('id')->on('categorys')->onDelete('cascade');
             $table->integer('price');
             $table->string('status');
-            $table->timestamps();
+            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
 
     }
