@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
+
 
 class seller extends Model
 {
     use HasFactory;
+    protected $table = 'sellers';
     protected $guarded = ['id'];
 
     public function products(){
@@ -19,14 +22,15 @@ class seller extends Model
         return $this->belongsToMany(permission::class, 'seller_permissions', 'seller_id', 'permission_id');
     }
 
-    protected function CreatedAt(): Attribute
-   {
-       return Attribute::make(
-           get: fn ($value) => Carbon::parse($value)->format('d-m-Y'),
-       );
-   }
+    public function setNameAttribute($value){  
+        $this->attributes['name'] = strtolower($value);
+    }
 
-    public function getUpdatedAtAttribute(){  
-        return date('d-m-Y', strtotime($value));
+    public function getCreatedAtAttribute($value){
+        return Carbon::parse($value)->format('d/m/Y');
+    }
+    
+    public function getUpdatedAtAttribute($value){
+        return Carbon::parse($value)->format('d/m/Y');
     }
 }

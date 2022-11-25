@@ -9,20 +9,19 @@ use Illuminate\Support\Facades\DB;
 class categoryController extends Controller
 {
     public function showCategory(){
-        return view('category', [
-            'data' => DB::table('categorys')->paginate(10)
-        ]);
+        $data = category::paginate(10);
+        return view('category')->with(compact('data'));
     }
 
     public function saveCategoryUseEloquent(Request $request){
         $request->validate([
             'name'=>'required',
-            'starus'=>'required'
+            'status'=>'required'
         ]);
         
         $category = new category;
         $category->name = $request->name;
-        $category->starus = $request->status;
+        $category->status = $request->status;
 
         $category->save();
 

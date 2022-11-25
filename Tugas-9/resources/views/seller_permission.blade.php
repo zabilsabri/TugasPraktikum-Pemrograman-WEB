@@ -94,6 +94,8 @@
                     <th scope="col">No</th>
                     <th scope="col">Seller</th>
                     <th scope="col">Permission</th>
+                    <th scope="col">Created At</th>
+                    <th scope="col">Updated At</th>
                     <th scope="col">Aksi</th>
                 </tr>
             </thead>
@@ -104,6 +106,8 @@
                     <td> {{ $index + $data->firstItem() }} </td>
                     <td> {{ $item->seller_id }} </td>
                     <td> {{ $item->permission_id }} </td>
+                    <td> {{ $item->created_at }} </td>
+                    <td> {{ $item->updated_at }} </td>
                     <td>
                         <div class="d-grid gap-2 d-md-block">
                             <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editS_PermissionUseQueryBuilder{{ $item->id }}" type="button">Edit</button>

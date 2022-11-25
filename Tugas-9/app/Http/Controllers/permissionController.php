@@ -9,9 +9,8 @@ use Illuminate\Support\Facades\DB;
 class permissionController extends Controller
 {
     public function showPermission(){
-        return view('permission', [
-            'data' => DB::table('permissions')->paginate(10)
-        ]);
+        $data = permission::paginate(10);
+        return view('permission')->with(compact('data'));
     }
 
     public function savePermissionUseEloquent(Request $request){
@@ -24,7 +23,7 @@ class permissionController extends Controller
         $permission = new permission;
         $permission->name = $request->name;
         $permission->description = $request->description;
-        $permission->starus = $request->status;
+        $permission->status = $request->status;
 
         $permission->save();
 
@@ -59,7 +58,7 @@ class permissionController extends Controller
         $permssion = permssion::find($id);
         $permssion->name = $request->name;
         $permssion->description = $request->description;
-        $permssion->starus = $request->status;
+        $permssion->status = $request->status;
 
         $category->save();
 

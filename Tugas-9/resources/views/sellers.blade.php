@@ -126,7 +126,7 @@
                         @endforeach
                     </td>
                     <td>{{ $item->created_at }}</td>
-                    <td>{{ date('d-m-Y', strtotime($item->updated_at)) }}</td>
+                    <td>{{ $item->updated_at }}</td>
                     <td>
                         <div class="d-grid gap-2 d-md-block">
                             <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editSellerUseQueryBuilder{{ $item->id }}" type="button">Edit</button>
@@ -165,7 +165,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="editSellerUseQueryBuilder/{{ $item->id }}" method="POST">
+                                <form action="editSellerUseEloquent/{{ $item->id }}" method="POST">
                                     @csrf
                                     <div class="mb-3 row">
                                         <label for="inputPassword" class="col-sm-2 col-form-label">Nama</label>
@@ -219,7 +219,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="saveSellerUseQueryBuilder" method="POST">
+                    <form action="saveSellerUseEloquent" method="POST">
                         @csrf
                         <div class="mb-3 row">
                             <label for="inputPassword" class="col-sm-2 col-form-label">Name</label>

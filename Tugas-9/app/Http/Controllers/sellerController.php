@@ -28,7 +28,7 @@ class sellerController extends Controller
             'status'=>'required',
         ]);
         
-        $seller = new seller;
+        $seller = new seller();
         $seller->name = $request->name;
         $seller->address = $request->address;
         $seller->gender = $request->gender;
@@ -78,7 +78,7 @@ class sellerController extends Controller
         $seller->no_hp = $request->no_hp;
         $seller->status = $request->status;
 
-        $product->save();
+        $seller->save();
 
         return redirect()->to('sellers')->send()->with('success', 'Data berhasil di edit!');
     }

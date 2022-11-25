@@ -25,16 +25,16 @@ class productController extends Controller
     public function saveProductUseEloquent(Request $request){
         $request->validate([
             'name'=>'required',
-            'seller name'=>'required',
-            'category name'=>'required',
+            'seller'=>'required',
+            'category'=>'required',
             'price'=>'required',
             'status'=>'required',
         ]);
         
         $product = new product;
         $product->name = $request->name;
-        $product->seller_id = $request->seller_id;
-        $product->category_id = $request->category_id;
+        $product->seller_id = $request->seller;
+        $product->category_id = $request->category;
         $product->price = $request->price;
         $product->status = $request->status;
 
@@ -68,16 +68,16 @@ class productController extends Controller
     public function editProductUseEloquent(Request $request, $id){
         $request->validate([
             'name'=>'required',
-            'seller name'=>'required',
-            'category name'=>'required',
+            'seller'=>'required',
+            'category'=>'required',
             'price'=>'required',
             'status'=>'required',
         ]);
         
         $product = product::find($id);
         $product->name = $request->name;
-        $product->seller_id = $request->seller_id;
-        $product->category_id = $request->category_id;
+        $product->seller_id = $request->seller;
+        $product->category_id = $request->category;
         $product->price = $request->price;
         $product->status = $request->status;
 

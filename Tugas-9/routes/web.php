@@ -20,36 +20,40 @@ use App\Http\Controllers\sellerPermissionController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//------------------------------------------------PRODUCTS-----------------------------------------------------------------
 
-Route::get('/products', [productController::class, 'showProduct']);
-Route::post('saveProductUseQueryBuilder', [productController::class, 'saveProductUseQueryBuilder']);
+Route::get('/products', [productController::class, 'showProduct']); // ELOQUENT
+Route::post('saveProductUseEloquent', [productController::class, 'saveProductUseEloquent']); // ELOQUENT
+Route::post('editProductUseEloquent/{id}', [productController::class, 'editProductUseEloquent']); // ELOQUENT
+Route::get('deleteProductUseQueryBuilder/{id}', [productController::class, 'deleteProductUseQueryBuilder']); // QUERY BUILDER
 
-Route::post('editProductUseQueryBuilder/{id}', [productController::class, 'editProductUseQueryBuilder']);
-Route::get('deleteProductUseQueryBuilder/{id}', [productController::class, 'deleteProductUseQueryBuilder']);
+// ------------------------------------------------------------------------------------------------------------------------
 
-Route::get('/sellers', [sellerController::class, 'showSeller']);
-Route::post('saveSellerUseQueryBuilder', [sellerController::class, 'saveSellerUseQueryBuilder']);
 
-Route::post('editSellerUseQueryBuilder/{id}', [sellerController::class, 'editSellerUseQueryBuilder']);
-Route::get('deleteSellerUseQueryBuilder/{id}', [sellerController::class, 'deleteSellerUseQueryBuilder']);
+// ----------------------------------------------SELLER--------------------------------------------------------------------
+Route::get('/sellers', [sellerController::class, 'showSeller']); // ELOQUENT
+Route::post('saveSellerUseEloquent', [sellerController::class, 'saveSellerUseEloquent']); // ELOQUENT
+Route::post('editSellerUseEloquent/{id}', [sellerController::class, 'editSellerUseEloquent']); // ELOQUENT
+Route::get('deleteSellerUseQueryBuilder/{id}', [sellerController::class, 'deleteSellerUseQueryBuilder']); // QUERY BUILDER
+// --------------------------------------------------------------------------------------------------------------------------
 
-Route::get('/category', [categoryController::class, 'showCategory']);
-Route::post('saveCategoryUseQueryBuilder', [categoryController::class, 'saveCategoryUseQueryBuilder']);
+// ------------------------------------------CATEGORY------------------------------------------------------------------------
+Route::get('/category', [categoryController::class, 'showCategory']); // ELOQUENT
+Route::post('saveCategoryUseEloquent', [categoryController::class, 'saveCategoryUseEloquent']); // ELOQUENT
+Route::post('editCategoryUseEloquent/{id}', [categoryController::class, 'editCategoryUseEloquent']); // ELOQUENT
+Route::get('deleteCategoryUseQueryBuilder/{id}', [categoryController::class, 'deleteCategoryUseQueryBuilder']); // QUERY BUILDER
+// --------------------------------------------------------------------------------------------------------------------------
 
-Route::post('editCategoryUseQueryBuilder/{id}', [categoryController::class, 'editCategoryUseQueryBuilder']);
-Route::get('deleteCategoryUseQueryBuilder/{id}', [categoryController::class, 'deleteCategoryUseQueryBuilder']);
+// -------------------------------------------PERMISSION---------------------------------------------------------------------
+Route::get('/permission', [permissionController::class, 'showPermission']); // ELOQUENT
+Route::post('savePermissionUseEloquent', [permissionController::class, 'savePermissionUseEloquent']); // ELOQUENT
+Route::post('editPermissionUseEloquent/{id}', [permissionController::class, 'editPermissionUseEloquent']); // ELOQUENT
+Route::get('deletePermissionUseQueryBuilder/{id}', [permissionController::class, 'deletePermissionUseQueryBuilder']); // QUERY BUILDER
+// ----------------------------------------------------------------------------------------------------------------------------
 
-Route::get('/permission', [permissionController::class, 'showPermission']);
-Route::post('savePermissionUseQueryBuilder', [permissionController::class, 'savePermissionUseQueryBuilder']);
-
-Route::post('editPermissionUseQueryBuilder/{id}', [permissionController::class, 'editPermissionUseQueryBuilder']);
-Route::get('deletePermissionUseQueryBuilder/{id}', [permissionController::class, 'deletePermissionUseQueryBuilder']);
-
-Route::get('/seller_permission', [sellerPermissionController::class, 'showS_Permission']);
-Route::post('saveS_PermissionUseQueryBuilder', [sellerPermissionController::class, 'saveS_PermissionUseQueryBuilder']);
-
-Route::post('editS_PermissionUseQueryBuilder/{id}', [sellerPermissionController::class, 'editS_PermissionUseQueryBuilder']);
-Route::get('deleteS_PermissionUseQueryBuilder/{id}', [sellerPermissionController::class, 'deleteS_PermissionUseQueryBuilder']);
+// ----------------------------------------------SELLER PERMISSION------------------------------------------------------------
+Route::get('/seller_permission', [sellerPermissionController::class, 'showS_Permission']); // ELOQUENT
+Route::post('saveS_PermissionUseQueryBuilder', [sellerPermissionController::class, 'saveS_PermissionUseQueryBuilder']); // ELOQUENT
+Route::post('editS_PermissionUseQueryBuilder/{id}', [sellerPermissionController::class, 'editS_PermissionUseQueryBuilder']); // ELOQUENT
+Route::get('deleteS_PermissionUseQueryBuilder/{id}', [sellerPermissionController::class, 'deleteS_PermissionUseQueryBuilder']); // QUERY BUILDER
+// ----------------------------------------------------------------------------------------------------------------------------
