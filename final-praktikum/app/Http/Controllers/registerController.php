@@ -19,13 +19,11 @@ class registerController extends Controller
             'password'=>'required'
         ]);
 
-        $password = bcrypt($request->input('password'));
-
         $query = DB::table('users')->insert([
-            'full_name'=>$request->input('fullName'),
+            'name'=>$request->input('fullName'),
             'level'=> 'admin',
             'email'=>$request->input('email'),
-            'password'=>$password
+            'password'=>bcrypt($request->input('password'))
         ]);
 
         if($query){

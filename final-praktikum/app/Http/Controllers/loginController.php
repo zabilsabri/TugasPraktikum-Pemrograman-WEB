@@ -10,7 +10,7 @@ class loginController extends Controller
 
     public function showLogin()
     {
-        return view('login');
+        return view('/login');
     }
 
     public function login(Request $request)
@@ -23,14 +23,9 @@ class loginController extends Controller
         }
     }
 
-    public function logout(Request $request)
+    public function logout()
     {
-        Auth::logout();
- 
-        request()->session()->invalidate();
- 
-        request()->session()->regenerateToken();
- 
-        return redirect('login');
+        Auth::Logout(); 
+        return \redirect('/login');
     }
 }
