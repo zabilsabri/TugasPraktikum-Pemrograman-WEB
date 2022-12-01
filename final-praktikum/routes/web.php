@@ -27,3 +27,4 @@ Route::get('/login', [loginController::class , 'showLogin']);
 Route::post('loginProcess', [loginController::class , 'login']);
 Route::get('/register', [registerController::class , 'showRegister']);
 Route::post('registerProcess', [registerController::class , 'register']);
+Route::get('/logout', [loginController::class , 'logout']);
