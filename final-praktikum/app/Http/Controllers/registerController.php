@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\register;
 
 class registerController extends Controller
 {
@@ -16,20 +17,17 @@ class registerController extends Controller
         $request->validate([
             'fullName' => 'required',
             'email'=>'required|email|unique:users',
-            'password'=>'required'
+            'password'=>'required', 
         ]);
 
-        $query = DB::table('users')->insert([
-            'name'=>$request->input('fullName'),
-            'level'=> 'admin',
-            'email'=>$request->input('email'),
-            'password'=>bcrypt($request->input('password'))
-        ]);
+        $register = new register();
+        $register->name = $request->fullName;
+        $register->email = $request->email;
+        $register->level = $request->level;
+        $register->password = bcrypt($request->password);
 
-        if($query){
-            return redirect()->to('login')->send();
-        } else {
-            return view('register');
-        }
+        $register->save();
+
+        return redirect()->to('/')->send()->with('success', 'Data berhasil di tambahkan!');
     }
 }
