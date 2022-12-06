@@ -56,18 +56,20 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($data as $index => $item)
                         <tr>
-                            <td>1.</td>
-                            <td>Update software</td>
-                            <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
-                            <td>1000</td>
-                            <td>1000</td>
-                            <td>1000</td>
-                            <td>10/05/2003</td>
+                            <td> {{ $index + $data->firstItem() }} </td>
+                            <td> {{ $item->title }} </td>
+                            <td>{{ $item->description }}</td>
+                            <td> - </td>
+                            <td> - </td>
+                            <td> - </td>
+                            <td>{{ $item->created_at }}</td>
                             <td>
                             <button type="button" class="btn btn-block bg-gradient-danger">Details</button>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\registerController;
+use App\Http\Controllers\articleController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,13 +25,14 @@ Route::group(['middleware' => ['auth', 'hakAkses:member, admin']], function(){
         return view('member/index');
     });
 
-    Route::get('/articles', function () {
-        return view('member/article');
-    });  
+    Route::get('articles', [articleController::class , 'showArticles']);
+
 
     Route::get('/createArticle', function () {
         return view('member/createArticle');
     });   
+
+    Route::post('createArticle', [articleController::class , 'create']);
 
 });
 
