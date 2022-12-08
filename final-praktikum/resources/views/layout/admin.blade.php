@@ -30,10 +30,10 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="home" class="nav-link">Home</a>
+        <a href="/home" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="articles" class="nav-link">articles</a>
+        <a href="/articles" class="nav-link">articles</a>
       </li>
     </ul>
 
@@ -87,16 +87,15 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-                <a href="home" class="nav-link">
+                <a href="/home" class="nav-link">
                   <p>Home</p>
                 </a>
           </li>
           <li class="nav-item">
-                <a href="articles" class="nav-link">
+                <a href="/articles" class="nav-link">
                   <p>Articles</p>
                 </a>
           </li>
-          
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -105,7 +104,7 @@
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  @yield('content');
+  @yield('content')
   <!-- /.content-wrapper -->
 
   <!-- Control Sidebar -->
@@ -114,15 +113,6 @@
   </aside>
   <!-- /.control-sidebar -->
 
-  <!-- Main Footer -->
-  <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.2.0
-    </div>
-  </footer>
-</div>
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
@@ -143,10 +133,5 @@
 <script src="{{asset('template/plugins/jquery-mapael/maps/usa_states.min.js ')}}"></script>
 <!-- ChartJS -->
 <script src="{{asset('template/plugins/chart.js/Chart.min.js ')}}"></script>
-
-<!-- AdminLTE for demo purposes -->
-<script src="{{asset('template/dist/js/demo.js ')}}"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{asset('template/dist/js/pages/dashboard2.js')}}"></script>
 </body>
 </html>

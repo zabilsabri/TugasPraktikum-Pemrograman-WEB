@@ -4,14 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\article;
+use Auth;
 
 
 class articleController extends Controller
 {
 
+    public function showArticleDetail($id)
+    {
+        $data = article::find($id);
+        return view('member/articleDetail' ,compact('data'));
+    }
+
     public function showArticles()
     {
-        $data = article::paginate(10);
+        $data = article::where('member_id', Auth::id())->paginate(10);
         return view('member/article')->with(compact('data'));
     }
 
@@ -27,6 +34,7 @@ class articleController extends Controller
         $article->title = $request->title;
         $article->description = $request->description;
         $article->body = $request->body;
+        $article->member_id = Auth::id();
 
         $article->save();
 

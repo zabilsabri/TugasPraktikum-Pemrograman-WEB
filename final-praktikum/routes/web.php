@@ -34,6 +34,8 @@ Route::group(['middleware' => ['auth', 'hakAkses:member, admin']], function(){
 
     Route::post('createArticle', [articleController::class , 'create']);
 
+    Route::get('articleDetail/{id}', [articleController::class , 'showArticleDetail']);
+
 });
 
 Route::get('', [loginController::class , 'showLogin'])->name('login');

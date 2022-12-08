@@ -66,7 +66,7 @@
                             <td> - </td>
                             <td>{{ $item->created_at }}</td>
                             <td>
-                            <button type="button" class="btn btn-block bg-gradient-danger">Details</button>
+                            <a class="btn btn-danger" href="articleDetail/{{$item -> id}}" role="button">Details</a>
                             </td>
                         </tr>
                         @endforeach
