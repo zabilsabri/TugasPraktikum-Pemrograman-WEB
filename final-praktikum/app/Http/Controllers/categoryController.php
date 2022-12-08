@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\category;
 use Auth;
+use Illuminate\Support\Facades\DB;
+
 
 class categoryController extends Controller
 {
@@ -39,5 +41,11 @@ class categoryController extends Controller
         $category->save();
 
         return redirect()->to('/category')->send()->with('success', 'Data berhasil di edit!');
+    }
+
+    public function delete($id)
+    {
+        $deleted = DB::table('categories')->where('id','=', $id)->delete();
+        return redirect()->to('/category')->send()->with('success', 'Data berhasil di hapus!');
     }
 }

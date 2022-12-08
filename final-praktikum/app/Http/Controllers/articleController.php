@@ -4,16 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\article;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Auth;
 
 
 class articleController extends Controller
 {
 
-    public function showArticleDetail($id)
+    public function showArticleDetail($id, $id2)
     {
-        $data = article::find($id);
-        return view('member/articleDetail' ,compact('data'));
+        $data = article::find($id)->categorys;
+        $data2 = article::find($id2)->author;
+        $data1 = DB::table('articles')->find($id);
+        return view('member/articleDetail')
+            -> with(compact('data'))
+            -> with(compact('data2'))
+            -> with(compact('data1'));
     }
 
     public function showArticles()
@@ -27,7 +34,8 @@ class articleController extends Controller
         $request->validate([
             'title' => 'required',
             'description'=>'required',
-            'body'=>'required', 
+            'body'=>'required',
+            'category' => 'required',
         ]);
 
         $article = new article();
@@ -35,9 +43,16 @@ class articleController extends Controller
         $article->description = $request->description;
         $article->body = $request->body;
         $article->member_id = Auth::id();
+        $article->category_id = $request->category;
 
         $article->save();
 
         return redirect()->to('/articles')->send()->with('success', 'Your Articles Successfully Uploaded!');
+    }
+
+    public function showCreateArticles()
+    {
+        $data = DB::table('categories')->where('author_id', Auth::id())->get();
+        return view('member/createArticle')->with(compact('data'));
     }
 }

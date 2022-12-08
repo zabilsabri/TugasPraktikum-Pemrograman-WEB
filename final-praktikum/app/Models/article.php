@@ -12,6 +12,15 @@ class article extends Model
 
     protected $table = 'articles';
 
+    public function categorys(){
+        return $this -> hasOne(category::class, 'id');
+    }
+
+    public function author()
+    {
+        return $this -> hasOne(User::class, 'id');
+    }
+
     public function getCreatedAtAttribute($value){
         return Carbon::parse($value)->format('d/m/Y H:i:s');
     }

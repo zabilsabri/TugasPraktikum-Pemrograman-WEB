@@ -24,7 +24,7 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">{{$data -> title}}</h3>
+          <h3 class="card-title">{{$data1 -> title}}</h3>
         </div>
         <div class="card-body">
           <div class="row">
@@ -56,23 +56,26 @@
                 </div>
               </div>
               <div class="row">
-                {{$data->body}}
+                {{$data1->body}}
               </div>
             </div>
             <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
               <h3 class="text-primary"><i class="fas fa-paint-brush"></i> Description</h3>
-              <p class="text-muted">{{$data->description}}</p>
+              <p class="text-muted">{{$data1->description}}</p>
               <br>
               <div class="text-muted">
                 <p class="text-sm">Author
-                  <b class="d-block">(Author Name)</b>
+                  <b class="d-block">{{$data2 -> name}}</b>
+                </p>
+                <p class="text-sm">Category
+                  <b class="d-block">{{$data ->name}}</b>
                 </p>
               </div>
 
               <h5 class="mt-5 text-muted">Author Details</h5>
               <ul class="list-unstyled">
                 <li>
-                  <p  class="btn-link text-secondary"><i class="far fa-fw fa-envelope"></i> (Author Email) </p>
+                  <p  class="btn-link text-secondary"><i class="far fa-fw fa-envelope"></i> {{$data2 -> email}} </p>
                 </li>
               </ul>
               <div class="text-center mt-5 mb-3">

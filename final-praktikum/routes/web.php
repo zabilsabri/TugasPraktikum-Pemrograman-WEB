@@ -29,20 +29,20 @@ Route::group(['middleware' => ['auth', 'hakAkses:member, admin']], function(){
 
     Route::get('articles', [articleController::class , 'showArticles']);
 
-
-    Route::get('/createArticle', function () {
-        return view('member/createArticle');
-    });   
+    Route::get('/createArticle', [articleController::class , 'showCreateArticles']);
 
     Route::post('createArticle', [articleController::class , 'create']);
 
     Route::post('createCategory', [categoryController::class , 'create']);
 
-    Route::get('articleDetail/{id}', [articleController::class , 'showArticleDetail']);
+    Route::get('articleDetail/{id}/{id2}', [articleController::class , 'showArticleDetail']);
 
     Route::post('editCategory/{id}', [categoryController::class, 'edit']);
 
     Route::get('category', [categoryController::class , 'showCategory']);
+
+    Route::get('deleteCategory/{id}', [categoryController::class, 'delete']);
+
 });
 
 Route::get('', [loginController::class , 'showLogin'])->name('login');

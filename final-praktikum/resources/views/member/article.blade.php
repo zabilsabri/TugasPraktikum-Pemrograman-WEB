@@ -66,7 +66,7 @@
                             <td> - </td>
                             <td>{{ $item->created_at }}</td>
                             <td>
-                            <a class="btn btn-danger" href="articleDetail/{{$item -> id}}" role="button">Details</a>
+                            <a class="btn btn-danger" href="articleDetail/{{$item -> id}}/{{$item->member_id}}" role="button">Details</a>
                             </td>
                         </tr>
                         @endforeach

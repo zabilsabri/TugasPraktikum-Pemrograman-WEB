@@ -57,10 +57,12 @@
                             <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#categoryEdit{{$item -> id}}">
                                 Edit
                             </button>
-                                <a class="btn btn-danger" href="categoryDelete{{$item -> id}}" role="button">Delete</a>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#categoryDelete{{$item -> id}}">
+                                Delete
+                            </button>
                             </td>
                         </tr>
-                       <!-- Create Category Modal -->
+                       <!-- Edit Category Modal -->
                         <div class="modal fade" id="categoryEdit{{$item -> id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
@@ -81,6 +83,25 @@
                                                 <button type="submit" class="btn btn-primary">Create</button>
                                             </div>
                                         </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Delete Category Modal -->
+                        <div class="modal fade" id="categoryDelete{{$item -> id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Create Category</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are You Sure? This action will delete all your articles that have this category
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <a type="button" class="btn btn-danger" href="deleteCategory/{{ $item->id }}">Hapus</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

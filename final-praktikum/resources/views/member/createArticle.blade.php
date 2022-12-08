@@ -39,9 +39,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail">Category</label>
-                                <select class="form-select" aria-label="Default select example">
+                                <select class="form-select" name="category" aria-label="Default select example">
                                     <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
+                                    @foreach($data as $item)
+                                    <option value="{{$item->id}}">{{$item -> name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
