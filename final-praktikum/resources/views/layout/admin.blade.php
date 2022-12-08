@@ -13,6 +13,9 @@
   <link rel="stylesheet" href="{{asset('template/plugins/overlayScrollbars/css/OverlayScrollbars.min.css' )}}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('template/dist/css/adminlte.min.css' )}}">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -34,6 +37,18 @@
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="/articles" class="nav-link">articles</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="/category" class="nav-link">Category</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="/subCategory" class="nav-link">Sub Category</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="/tag" class="nav-link">Tag</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="/user" class="nav-link">User</a>
       </li>
     </ul>
 
@@ -96,6 +111,26 @@
                   <p>Articles</p>
                 </a>
           </li>
+          <li class="nav-item">
+                <a href="/category" class="nav-link">
+                  <p>Category</p>
+                </a>
+          </li>
+          <li class="nav-item">
+                <a href="/subCategory" class="nav-link">
+                  <p>Sub Category</p>
+                </a>
+          </li>
+          <li class="nav-item">
+                <a href="/tag" class="nav-link">
+                  <p>Tag</p>
+                </a>
+          </li>
+          <li class="nav-item">
+                <a href="/userList" class="nav-link">
+                  <p>User List</p>
+                </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -133,5 +168,7 @@
 <script src="{{asset('template/plugins/jquery-mapael/maps/usa_states.min.js ')}}"></script>
 <!-- ChartJS -->
 <script src="{{asset('template/plugins/chart.js/Chart.min.js ')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
 </body>
 </html>

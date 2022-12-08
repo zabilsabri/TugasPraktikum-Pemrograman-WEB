@@ -30,12 +30,19 @@
                     <div class="form-group">
                         <form action="createArticle" method="POST">
                             @csrf
-                                    <label for="inputName">Title</label>
-                                    <input type="text" id="title" name="title" class="form-control">
+                                <label for="inputName">Title</label>
+                                <input type="text" id="title" name="title" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail">Description (At least 20 characters)</label>
                                 <input type="text" id="description" name="description" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail">Category</label>
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected>Open this select menu</option>
+                                    <option value="1">One</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="inputMessage">Articles's Body</label>

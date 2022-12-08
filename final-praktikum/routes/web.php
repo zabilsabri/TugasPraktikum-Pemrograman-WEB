@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\articleController;
+use App\Http\Controllers\categoryController;
 
 
 /*
@@ -21,6 +22,7 @@ use App\Http\Controllers\articleController;
 
 
 Route::group(['middleware' => ['auth', 'hakAkses:member, admin']], function(){
+    
     Route::get('/home', function () {
         return view('member/index');
     });
@@ -34,8 +36,13 @@ Route::group(['middleware' => ['auth', 'hakAkses:member, admin']], function(){
 
     Route::post('createArticle', [articleController::class , 'create']);
 
+    Route::post('createCategory', [categoryController::class , 'create']);
+
     Route::get('articleDetail/{id}', [articleController::class , 'showArticleDetail']);
 
+    Route::post('editCategory/{id}', [categoryController::class, 'edit']);
+
+    Route::get('category', [categoryController::class , 'showCategory']);
 });
 
 Route::get('', [loginController::class , 'showLogin'])->name('login');
