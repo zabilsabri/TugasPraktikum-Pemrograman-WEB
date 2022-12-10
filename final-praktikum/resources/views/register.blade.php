@@ -27,7 +27,15 @@
       <form action="registerProcess" method="post">
         @csrf
         <div class="input-group mb-3">
-          <input type="text" class="form-control" name="fullName" placeholder="Full name">
+          <input type="text" class="form-control" name="name" placeholder="Full name">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" name="userName" placeholder="User Name">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -50,29 +58,7 @@
             </div>
           </div>
         </div>
-        <div class="input-group mb-3">
-          <input type="password" class="form-control" name="rPassword" placeholder="Retype password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="agreeTerms" name="level" value="member">
-              <label for="agreeTerms">
-               Join As A Creator
-              </label>
-            </div>
-          </div>
-          <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Register</button>
-          </div>
-          <!-- /.col -->
-        </div>
+        <button type="submit" class="btn btn-primary btn-block">Register</button>
       </form>
 
       <a href="/" class="text-center">I already have a membership</a>

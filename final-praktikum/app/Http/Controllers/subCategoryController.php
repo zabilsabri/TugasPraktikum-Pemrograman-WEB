@@ -52,7 +52,7 @@ class subCategoryController extends Controller
 
     public function delete($id)
     {
-        $deleted = DB::table('subCategory')->where('id','=', $id)->delete();
-        return redirect()->to('/Subcategory')->send()->with('success', 'Data berhasil di hapus!');
+        $deleted = DB::table('sub_category')->where('id','=', $id)->delete();
+        return redirect()->to('/subCategory')->send()->with('success', 'Data berhasil di hapus!');
     }
 }

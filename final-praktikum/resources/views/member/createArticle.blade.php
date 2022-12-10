@@ -46,6 +46,15 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label for="inputEmail">Sub Category</label>
+                                <select class="form-select" name="subCategory" aria-label="Default select example">
+                                    <option selected>Open this select menu</option>
+                                    @foreach($data3 as $item)
+                                    <option value="{{$item->id}}">{{$item -> name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <label for="inputEmail">Tag</label>
                             <div class="form-group">
                                 @foreach ($data2 as $item)

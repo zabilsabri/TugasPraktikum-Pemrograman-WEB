@@ -15,16 +15,18 @@ class registerController extends Controller
 
     public function register(Request $request){
         $request->validate([
-            'fullName' => 'required',
+            'name' => 'required|unique:users',
+            'userName' => 'required|unique:users',
             'email'=>'required|email|unique:users',
-            'password'=>'required', 
+            'password'=>'required',
         ]);
 
         $register = new register();
-        $register->name = $request->fullName;
+        $register->name = $request->name;
+        $register->userName = $request->userName;
         $register->email = $request->email;
-        $register->level = $request->level;
         $register->password = bcrypt($request->password);
+        $register->level = 'member';
 
         $register->save();
 

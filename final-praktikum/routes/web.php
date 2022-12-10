@@ -7,6 +7,7 @@ use App\Http\Controllers\articleController;
 use App\Http\Controllers\categoryController;
 use App\Http\Controllers\subCategoryController;
 use App\Http\Controllers\tagController;
+use App\Http\Controllers\userListController;
 
 
 /*
@@ -60,6 +61,8 @@ Route::group(['middleware' => ['auth', 'hakAkses:member, admin']], function(){
     Route::post('editTag/{id}', [tagController::class, 'edit']);
 
     Route::get('deleteTag/{id}', [tagController::class, 'delete']);
+
+    Route::get('userList', [userListController::class , 'showUserList']);
 
 });
 

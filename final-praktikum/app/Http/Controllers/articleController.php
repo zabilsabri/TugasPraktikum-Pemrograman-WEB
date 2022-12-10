@@ -37,7 +37,6 @@ class articleController extends Controller
             'description'=>'required',
             'body'=>'required',
             'category' => 'required',
-            'subCategory' => 'required',
         ]);
 
         $article = new article();
@@ -50,11 +49,10 @@ class articleController extends Controller
 
         $article->save();
 
-        # $article_tag = new articleTag();
-        # $article_tag->tag_id = $request->tags;
-        # $article_tag->article_id = Auth::id();
-
-        # $article_tag->save();
+        $article_tag = new articleTag();
+        $article_tag->tag_id = $request->tags;
+        $article_tag->article_id = Auth::id();
+        $article_tag->save();
 
         return redirect()->to('/articles')->send()->with('success', 'Your Articles Successfully Uploaded!');
     }
@@ -63,8 +61,10 @@ class articleController extends Controller
     {
         $data = DB::table('categories')->where('author_id', Auth::id())->get();
         $data2 = DB::table('tags')->where('author_id', Auth::id())->get();
+        $data3 = DB::table('sub_category')->where('author_id', Auth::id())->get();
         return view('member/createArticle')
             ->with(compact('data'))
-            ->with(compact('data2'));
+            ->with(compact('data2'))
+            ->with(compact('data3'));
     }
 }
