@@ -46,6 +46,15 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <label for="inputEmail">Tag</label>
+                            <div class="form-group">
+                                @foreach ($data2 as $item)
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="tags" value="{{ $item->id }}">
+                                    <label class="form-check-label" for="inlineCheckbox1">{{ $item -> name }}</label>
+                                </div>
+                                @endforeach
+                            </div>
                             <div class="form-group">
                                 <label for="inputMessage">Articles's Body</label>
                                 <textarea id="body" class="form-control" name="body" rows="4"></textarea>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\article;
+use App\Models\articleTag;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Auth;
@@ -36,6 +37,7 @@ class articleController extends Controller
             'description'=>'required',
             'body'=>'required',
             'category' => 'required',
+            'subCategory' => 'required',
         ]);
 
         $article = new article();
@@ -44,8 +46,15 @@ class articleController extends Controller
         $article->body = $request->body;
         $article->member_id = Auth::id();
         $article->category_id = $request->category;
+        $article->sub_category_id = $request->subCategory;
 
         $article->save();
+
+        # $article_tag = new articleTag();
+        # $article_tag->tag_id = $request->tags;
+        # $article_tag->article_id = Auth::id();
+
+        # $article_tag->save();
 
         return redirect()->to('/articles')->send()->with('success', 'Your Articles Successfully Uploaded!');
     }
@@ -53,6 +62,9 @@ class articleController extends Controller
     public function showCreateArticles()
     {
         $data = DB::table('categories')->where('author_id', Auth::id())->get();
-        return view('member/createArticle')->with(compact('data'));
+        $data2 = DB::table('tags')->where('author_id', Auth::id())->get();
+        return view('member/createArticle')
+            ->with(compact('data'))
+            ->with(compact('data2'));
     }
 }

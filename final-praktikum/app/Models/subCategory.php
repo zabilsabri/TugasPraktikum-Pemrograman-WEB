@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
+
+
+class subCategory extends Model
+{
+    use HasFactory;
+    protected $table = 'sub_category';
+
+    public function getCategoryIdAttribute($value)
+    {
+        $name = DB::table('categories')
+        ->select('name')
+        ->where('id', $value)
+        ->first();
+
+        foreach ($name as $key => $access) {
+            return $access;
+        }
+    }
+}

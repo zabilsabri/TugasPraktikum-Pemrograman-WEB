@@ -5,6 +5,8 @@ use App\Http\Controllers\loginController;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\articleController;
 use App\Http\Controllers\categoryController;
+use App\Http\Controllers\subCategoryController;
+use App\Http\Controllers\tagController;
 
 
 /*
@@ -42,6 +44,22 @@ Route::group(['middleware' => ['auth', 'hakAkses:member, admin']], function(){
     Route::get('category', [categoryController::class , 'showCategory']);
 
     Route::get('deleteCategory/{id}', [categoryController::class, 'delete']);
+
+    Route::get('subCategory', [subCategoryController::class , 'showSubCategory']);
+
+    Route::post('createSubCategory', [subCategoryController::class , 'create']);
+
+    Route::get('tag', [TagController::class , 'showTag']);
+
+    Route::post('createTag', [TagController::class , 'create']);
+
+    Route::post('editSubCategory/{id}', [subCategoryController::class, 'edit']);
+
+    Route::get('deleteSubCategory/{id}', [subCategoryController::class, 'delete']);
+
+    Route::post('editTag/{id}', [tagController::class, 'edit']);
+
+    Route::get('deleteTag/{id}', [tagController::class, 'delete']);
 
 });
 
