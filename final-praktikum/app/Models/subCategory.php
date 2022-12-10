@@ -19,8 +19,17 @@ class subCategory extends Model
         ->where('id', $value)
         ->first();
 
-        foreach ($name as $key => $access) {
-            return $access;
+        if(isset($name)){
+            foreach ($name as $key => $access) {
+                return $access;
+            }
         }
+        
+    }
+
+    public function getIdAttribute($value)
+    {
+        $count = DB::table('articles')->where('sub_category_id', $value)->count();
+        return $count;
     }
 }

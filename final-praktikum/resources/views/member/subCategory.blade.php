@@ -52,7 +52,7 @@
                             <td> {{ $index + $data->firstItem() }} </td>
                             <td> {{ $item->name }} </td>
                             <td> {{$item -> category_id}} </td>
-                            <td>(Article's Count)</td>
+                            <td>{{ $item -> id }}</td>
                             <td> {{$item -> created_at}} </td>
                             <td> {{ Auth::user()->name }} </td>
                             <td>

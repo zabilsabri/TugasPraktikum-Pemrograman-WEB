@@ -15,11 +15,9 @@ class articleController extends Controller
 
     public function showArticleDetail($id, $id2)
     {
-        $data = article::find($id)->categorys;
         $data2 = article::find($id2)->author;
         $data1 = DB::table('articles')->find($id);
         return view('member/articleDetail')
-            -> with(compact('data'))
             -> with(compact('data2'))
             -> with(compact('data1'));
     }
@@ -52,6 +50,7 @@ class articleController extends Controller
         $article_tag = new articleTag();
         $article_tag->tag_id = $request->tags;
         $article_tag->article_id = Auth::id();
+        
         $article_tag->save();
 
         return redirect()->to('/articles')->send()->with('success', 'Your Articles Successfully Uploaded!');

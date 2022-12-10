@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\category;
+use App\Models\article;
 use Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -13,7 +14,8 @@ class categoryController extends Controller
     public function showCategory()
     {
         $data = category::where('author_id', Auth::id())->paginate(10);
-        return view('member/category')->with(compact('data'));
+        return view('member/category')
+            ->with(compact('data'));
     }
 
     public function create(Request $request)

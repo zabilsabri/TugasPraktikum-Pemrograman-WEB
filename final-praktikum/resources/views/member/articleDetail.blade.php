@@ -65,10 +65,10 @@
               <br>
               <div class="text-muted">
                 <p class="text-sm">Author
-                  <b class="d-block">{{$data2 -> name}}</b>
+                  <b class="d-block">{{$data2 -> username}}</b>
                 </p>
                 <p class="text-sm">Category
-                  <b class="d-block">{{$data ->name}}</b>
+                  <b class="d-block">{{$data1 ->category_id}}</b>
                 </p>
               </div>
 

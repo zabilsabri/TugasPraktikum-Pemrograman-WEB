@@ -49,7 +49,7 @@
                             <td> {{ $item->name }} </td>
                             <td>{{ $item -> email }}</td>
                             <td> {{$item -> username}} </td>
-                            <td> (article authored) </td>
+                            <td> {{$item -> id}} </td>
                             <td> {{ $item->created_at }} </td>
                         </tr>
                        <!-- Edit Category Modal -->

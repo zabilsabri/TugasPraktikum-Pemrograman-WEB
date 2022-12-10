@@ -18,12 +18,12 @@ return new class extends Migration
             $table->string('title');
             $table->string('description');
             $table->text('body');
-            $table->unsignedBigInteger('member_id');
-            $table->foreign('member_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->unsignedBigInteger('sub_category_id');
-            $table->foreign('sub_category_id')->references('id')->on('sub_category')->onDelete('cascade');
+            $table->unsignedBigInteger('member_id')->nullable();
+            $table->foreign('member_id')->references('id')->on('users')->onDelete('set null');
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');
+            $table->unsignedBigInteger('sub_category_id')->nullable();
+            $table->foreign('sub_category_id')->references('id')->on('sub_category')->onDelete('set null');
             $table->timestamps();
         });
 
