@@ -12,7 +12,8 @@ class article extends Model
 
     protected $table = 'articles';
 
-    public function categorys(){
+    public function categorys()
+    {
         return $this -> hasOne(category::class, 'id');
     }
 

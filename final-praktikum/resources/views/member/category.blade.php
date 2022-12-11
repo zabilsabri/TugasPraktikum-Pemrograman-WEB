@@ -50,7 +50,7 @@
                         <tr>
                             <td> {{ $index + $data->firstItem() }} </td>
                             <td> {{ $item->name }} </td>
-                            <td>{{ $item->id }}</td>
+                            <td> {{ $item->articles_count }} </td>
                             <td> {{$item -> created_at}} </td>
                             <td> {{ Auth::user()->name }} </td>
                             <td>

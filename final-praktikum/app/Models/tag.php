@@ -11,9 +11,14 @@ class tag extends Model
     use HasFactory;
     protected $table = 'tags';
 
-    public function getIdAttribute($value)
+    public function articles()
     {
-        $count = DB::table('article_tags')->where('tag_id', $value)->count();
-        return $count;
+        return $this -> hasMany(articleTag::class);
     }
+
+    // public function getIdAttribute($value)
+    // {
+    //     $count = DB::table('article_tags')->where('tag_id', $value)->count();
+    //     return $count;
+    // }
 }

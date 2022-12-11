@@ -27,9 +27,14 @@ class subCategory extends Model
         
     }
 
-    public function getIdAttribute($value)
+    public function articles()
     {
-        $count = DB::table('articles')->where('sub_category_id', $value)->count();
-        return $count;
+        return $this -> hasMany(article::class);
     }
+
+    // public function getIdAttribute($value)
+    // {
+    //     $count = DB::table('articles')->where('sub_category_id', $value)->count();
+    //     return $count;
+    // }
 }

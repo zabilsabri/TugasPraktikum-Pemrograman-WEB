@@ -15,11 +15,19 @@ class articleController extends Controller
 
     public function showArticleDetail($id, $id2)
     {
-        $data2 = article::find($id2)->author;
+        $data2 = DB::table('users')->find($id2);
         $data1 = DB::table('articles')->find($id);
+        $data3 = DB::table('categories')->where('id', $data1->category_id)->get();
+        $data4 = DB::table('article_tags')->where('article_id', $data1->id)->get();
+        foreach ($data4 as $item) {
+            $data5 = DB::table('tags')->where('id', $item->tag_id)->get();
+        }
         return view('member/articleDetail')
             -> with(compact('data2'))
-            -> with(compact('data1'));
+            -> with(compact('data1'))
+            -> with(compact('data3'))
+            -> with(compact('data4'))
+            -> with(compact('data5'));
     }
 
     public function showArticles()
@@ -35,6 +43,7 @@ class articleController extends Controller
             'description'=>'required',
             'body'=>'required',
             'category' => 'required',
+            'status' => 'required',
         ]);
 
         $article = new article();
@@ -44,12 +53,13 @@ class articleController extends Controller
         $article->member_id = Auth::id();
         $article->category_id = $request->category;
         $article->sub_category_id = $request->subCategory;
+        $article->status = $request->status;
 
         $article->save();
 
         $article_tag = new articleTag();
         $article_tag->tag_id = $request->tags;
-        $article_tag->article_id = Auth::id();
+        $article_tag->article_id = $article->id;
         
         $article_tag->save();
 

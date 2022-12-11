@@ -12,9 +12,14 @@ class category extends Model
     use HasFactory;
     protected $table = 'categories';
 
-    public function getIdAttribute($value)
+    public function articles()
     {
-        $count = DB::table('articles')->where('category_id', $value)->count();
-        return $count;
+        return $this -> hasMany(article::class);
     }
+
+    // public function getIdAttribute($value)
+    // {
+    //     $count = DB::table('articles')->where('category_id', $value)->count();
+    //     return $count;
+    // }
 }

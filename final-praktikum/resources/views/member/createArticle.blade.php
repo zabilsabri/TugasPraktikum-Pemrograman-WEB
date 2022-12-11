@@ -40,7 +40,7 @@
                             <div class="form-group">
                                 <label for="inputEmail">Category</label>
                                 <select class="form-select" name="category" aria-label="Default select example">
-                                    <option selected>Open this select menu</option>
+                                    <option selected>-- Category</option>
                                     @foreach($data as $item)
                                     <option value="{{$item->id}}">{{$item -> name}}</option>
                                     @endforeach
@@ -49,7 +49,7 @@
                             <div class="form-group">
                                 <label for="inputEmail">Sub Category</label>
                                 <select class="form-select" name="subCategory" aria-label="Default select example">
-                                    <option selected>Open this select menu</option>
+                                    <option selected>-- Sub Category</option>
                                     @foreach($data3 as $item)
                                     <option value="{{$item->id}}">{{$item -> name}}</option>
                                     @endforeach
@@ -67,6 +67,14 @@
                             <div class="form-group">
                                 <label for="inputMessage">Articles's Body</label>
                                 <textarea id="body" class="form-control" name="body" rows="4"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="status">Status</label>
+                                <select class="form-select" name="status" aria-label="Default select example">
+                                    <option value="" selected>-- Status</option>
+                                    <option value="archived">Archived</option>
+                                    <option value="Published">Published</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Submit</button>

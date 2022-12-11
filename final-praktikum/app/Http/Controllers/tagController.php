@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\tag;
+use App\Models\articleTag;
 use Illuminate\Support\Facades\DB;
 use Auth;
 
@@ -11,8 +12,9 @@ class tagController extends Controller
 {
     public function showTag()
     {
-        $data = tag::where('author_id', Auth::id())->paginate(10);
-        return view('member/tag')->with(compact('data'));
+        $data = tag::withCount('articles')->where('author_id', Auth::id())->paginate(10);
+        return view('member/tag')
+            ->with(compact('data'));
     }
 
     public function create(Request $request)

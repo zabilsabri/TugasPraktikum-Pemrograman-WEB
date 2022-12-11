@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\subCategory;
+use App\Models\article;
 use Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -12,9 +13,8 @@ class subCategoryController extends Controller
 {
     public function showSubCategory()
     {
-        $data = subCategory::where('author_id', Auth::id())->paginate(10);
-        $test = subCategory::where('author_id', Auth::id())->first();
-        $data2 = DB::table('categories')->where('author_id', Auth::id())->get(); // untuk ambil nama kategori yang di buat user
+        $data = subCategory::withCount('articles')->where('author_id', Auth::id())->paginate(10);
+        $data2 = DB::table('categories')->where('author_id', Auth::id())->get();
         return view('member/subCategory')
             ->with(compact('data'))
             ->with(compact('data2'));

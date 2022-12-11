@@ -68,7 +68,14 @@
                   <b class="d-block">{{$data2 -> username}}</b>
                 </p>
                 <p class="text-sm">Category
-                  <b class="d-block">{{$data1 ->category_id}}</b>
+                  @foreach ($data3 as $item)
+                  <b class="d-block">{{$item -> name}}</b>
+                  @endforeach
+                </p>
+                <p class="text-sm">Tags
+                  @foreach ($data5 as $item)
+                  <b class="d-block">{{$item -> name}}</b>
+                  @endforeach
                 </p>
               </div>
 
