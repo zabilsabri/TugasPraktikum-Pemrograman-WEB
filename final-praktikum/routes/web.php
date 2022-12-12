@@ -8,20 +8,9 @@ use App\Http\Controllers\categoryController;
 use App\Http\Controllers\subCategoryController;
 use App\Http\Controllers\tagController;
 use App\Http\Controllers\userListController;
-
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-
+use App\Http\Controllers\homePageController;
+use App\Http\Controllers\articleListController;
+use App\Http\Controllers\memberListController;
 
 
 Route::group(['middleware' => ['auth', 'hakAkses:member, admin']], function(){
@@ -66,7 +55,11 @@ Route::group(['middleware' => ['auth', 'hakAkses:member, admin']], function(){
 
 });
 
-Route::get('', [loginController::class , 'showLogin'])->name('login');
+Route::get('', [homePageController::class , 'showHomePage']);
+Route::get('articleList', [articleListController::class , 'showArticleList']);
+Route::get('memberList', [memberListController::class , 'showMemberList']);
+
+Route::get('/login', [loginController::class , 'showLogin'])->name('login');
 Route::post('loginProcess', [loginController::class , 'login']);
 Route::get('/register', [registerController::class , 'showRegister'])->name('register');
 Route::post('registerProcess', [registerController::class , 'register']);

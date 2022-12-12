@@ -13,7 +13,7 @@ class tag extends Model
 
     public function articles()
     {
-        return $this->belongsToMany(article::class);
+        return $this->belongsToMany(article::class, 'article_tags', 'tag_id', 'article_id');
     }
 
     // public function getIdAttribute($value)
