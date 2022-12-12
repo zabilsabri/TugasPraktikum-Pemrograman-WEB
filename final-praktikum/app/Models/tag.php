@@ -13,7 +13,7 @@ class tag extends Model
 
     public function articles()
     {
-        return $this -> hasMany(articleTag::class);
+        return $this->belongsToMany(article::class);
     }
 
     // public function getIdAttribute($value)

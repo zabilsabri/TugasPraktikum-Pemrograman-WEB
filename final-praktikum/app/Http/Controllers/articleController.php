@@ -19,9 +19,7 @@ class articleController extends Controller
         $data1 = DB::table('articles')->find($id);
         $data3 = DB::table('categories')->where('id', $data1->category_id)->get();
         $data4 = DB::table('article_tags')->where('article_id', $data1->id)->get();
-        foreach ($data4 as $item) {
-            $data5 = DB::table('tags')->where('id', $item->tag_id)->get();
-        }
+        $data5 = article::with('tags')->get();
         return view('member/articleDetail')
             -> with(compact('data2'))
             -> with(compact('data1'))
@@ -57,11 +55,15 @@ class articleController extends Controller
 
         $article->save();
 
-        $article_tag = new articleTag();
-        $article_tag->tag_id = $request->tags;
-        $article_tag->article_id = $article->id;
-        
-        $article_tag->save();
+        $query = DB::table('tags')->where('author_id', Auth::id())->get();
+        foreach ($query as $list) {
+            $data[] = array(
+            'article_id'  => $article->id,
+            'tag_id'      => $request->input('tags'.$list->id),
+          );
+        }
+        //dd($data);
+        DB::table('article_tags')->insert($data); 
 
         return redirect()->to('/articles')->send()->with('success', 'Your Articles Successfully Uploaded!');
     }

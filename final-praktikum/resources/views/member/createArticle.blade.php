@@ -59,7 +59,7 @@
                             <div class="form-group">
                                 @foreach ($data2 as $item)
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="tags" value="{{ $item->id }}">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="tags{{$item->id}}" value="{{ $item->id }}">
                                     <label class="form-check-label" for="inlineCheckbox1">{{ $item -> name }}</label>
                                 </div>
                                 @endforeach

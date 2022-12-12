@@ -73,8 +73,10 @@
                   @endforeach
                 </p>
                 <p class="text-sm">Tags
-                  @foreach ($data5 as $item)
-                  <b class="d-block">{{$item -> name}}</b>
+                  @foreach ($data5 as $itemss)
+                    @foreach ($itemss->tags as $tag)
+                    <b class="d-block">{{$tag -> name}}</b>
+                    @endforeach
                   @endforeach
                 </p>
               </div>

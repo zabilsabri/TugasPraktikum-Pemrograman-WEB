@@ -22,6 +22,11 @@ class article extends Model
         return $this -> hasOne(User::class, 'id');
     }
 
+    public function tags()
+    {
+        return $this->belongsToMany(tag::class, 'article_tags', 'article_id', 'tag_id');
+    }
+
     public function getCreatedAtAttribute($value){
         return Carbon::parse($value)->format('d/m/Y H:i:s');
     }
