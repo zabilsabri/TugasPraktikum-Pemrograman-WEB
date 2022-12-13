@@ -61,7 +61,7 @@
         <button type="submit" class="btn btn-primary btn-block">Register</button>
       </form>
 
-      <a href="/" class="text-center">I already have a membership</a>
+      <a href="/login" class="text-center">I already have a membership</a>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->

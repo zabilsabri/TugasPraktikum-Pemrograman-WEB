@@ -30,6 +30,6 @@ class registerController extends Controller
 
         $register->save();
 
-        return redirect()->to('/')->send()->with('success', 'Data berhasil di tambahkan!');
+        return redirect()->to('/login')->send()->with('success', 'Data berhasil di tambahkan!');
     }
 }

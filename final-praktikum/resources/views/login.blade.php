@@ -14,10 +14,11 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('template/dist/css/adminlte.min.css')}}">
 </head>
+<!-- Page Second Navigation -->
 <body class="login-page" style="min-height: 496.8px;">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>Blog</b>System</a>
+    <a href="/"><b>Blog</b>Zyztem</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
@@ -59,12 +60,12 @@
 </div>
 <!-- /.login-box -->
 
-<!-- jQuery -->
-<script src="../../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
+  <!-- jQuery -->
+  <script src="../../plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="../../dist/js/adminlte.min.js"></script>
 
 
 </body>
