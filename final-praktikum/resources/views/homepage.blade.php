@@ -9,11 +9,11 @@
     <div class="container">
         <section>
             <div class="feature-posts">
-                <a href="single-post.html" class="feature-post-item">                       
+                <a class="feature-post-item">                       
                     <span>Top Member</span>
                 </a>
                 @foreach($data as $item)
-                <a href="single-post.html" class="feature-post-item">
+                <a href="memberDetail/{{ $item->id }}" class="feature-post-item">
                     <img src="{{asset('blogTemplate/assets/imgs/unknown_pic.jpg')}}" class="w-100" alt="prof-pic">
                     <div class="feature-post-caption">{{$item -> name}}</div>
                 </a>

@@ -11,6 +11,8 @@ use App\Http\Controllers\userListController;
 use App\Http\Controllers\homePageController;
 use App\Http\Controllers\articleListController;
 use App\Http\Controllers\memberListController;
+use App\Http\Controllers\memberDetailController;
+
 
 
 Route::group(['middleware' => ['auth', 'hakAkses:member, admin']], function(){
@@ -58,6 +60,7 @@ Route::group(['middleware' => ['auth', 'hakAkses:member, admin']], function(){
 Route::get('', [homePageController::class , 'showHomePage']);
 Route::get('articleList', [articleListController::class , 'showArticleList']);
 Route::get('memberList', [memberListController::class , 'showMemberList']);
+Route::get('memberDetail/{id}', [memberDetailController::class , 'showMemberDetail']);
 
 Route::get('/login', [loginController::class , 'showLogin'])->name('login');
 Route::post('loginProcess', [loginController::class , 'login']);
