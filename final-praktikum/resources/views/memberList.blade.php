@@ -1,5 +1,6 @@
 @extends('layout.user')
 @section('content')
+<div class="container" style="margin-top: 20px;">
 <table class="table table-striped" id="tableBlog">
          <thead>
             <tr>
@@ -22,4 +23,5 @@
             @endforeach
          </tbody>
 </table>
+</div>
 @endsection
