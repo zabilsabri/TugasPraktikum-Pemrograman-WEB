@@ -18,7 +18,7 @@
                <td>{{$item->name}}</td>
                <td>{{ $item->articles_count }} </td>
                <td>{{ $item->created_at }}</td>
-               <td><a class="btn btn-primary rounded" href="memberDetail">Detail</a></td>
+               <td><a class="btn btn-primary rounded" href="memberDetail/{{ $item->id }}">Detail</a></td>
             </tr>
             @endforeach
          </tbody>

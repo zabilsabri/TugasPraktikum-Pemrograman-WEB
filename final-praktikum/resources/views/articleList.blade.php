@@ -21,11 +21,14 @@
                     </div>
 
                     <div class="card-footer p-0 text-center">
-                        <a href="single-post.html" class="btn btn-outline-dark btn-sm">READ MORE</a>
+                        <a href="publicArticleDetail/{{ $item->id }}" class="btn btn-outline-dark btn-sm">READ MORE</a>
                     </div>
                 </div>
             </div>
             @endforeach
         </div>
+    </div>
+    <div class="paginationButtonLink">
+        {{$data->links()}}
     </div>
     @endsection

@@ -73,9 +73,11 @@
                   @endforeach
                 </p>
                 <p class="text-sm">Tags
+                    <div class="row" >
                   @foreach ($data5 as $itemss)
-                    <b class="d-block">{{$itemss -> tag_id}}</b>
+                    <b class="d-block col-2">{{$itemss -> tag_id}}</b>
                   @endforeach
+                    </div>
                 </p>
               </div>
 

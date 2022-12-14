@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
 
-class articleTag extends Model
+class publicArticleDetailTag extends Model
 {
     use HasFactory;
     protected $table = 'article_tags';

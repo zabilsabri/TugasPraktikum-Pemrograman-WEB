@@ -12,6 +12,7 @@ use App\Http\Controllers\homePageController;
 use App\Http\Controllers\articleListController;
 use App\Http\Controllers\memberListController;
 use App\Http\Controllers\memberDetailController;
+use App\Http\Controllers\publicArticleDetailController;
 
 
 
@@ -71,3 +72,5 @@ Route::post('loginProcess', [loginController::class , 'login']);
 Route::get('/register', [registerController::class , 'showRegister'])->name('register');
 Route::post('registerProcess', [registerController::class , 'register']);
 Route::get('/logout', [loginController::class , 'logout']);
+
+Route::get('publicArticleDetail/{id}', [publicArticleDetailController::class, 'showPublicArticleDetail']);

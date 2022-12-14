@@ -9,7 +9,7 @@ class articleListController extends Controller
 {
     public function showArticleList()
     {
-        $data = articleList::paginate(10);
+        $data = articleList::where('status', 'published')->paginate(6);
         return view('articleList')
             -> with(compact('data'));
     }

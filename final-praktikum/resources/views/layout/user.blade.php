@@ -13,6 +13,7 @@
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
   
+    <link rel="stylesheet" href="{{asset('/css/style.css')}}">
 
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
@@ -33,10 +34,10 @@
                         <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="articleList">Article List</a>
+                        <a class="nav-link" href="/articleList">Article List</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="memberList">Member List</a>
+                        <a class="nav-link" href="/memberList">Member List</a>
                     </li>
                 </ul>
                 <div class="navbar-nav ml-auto">

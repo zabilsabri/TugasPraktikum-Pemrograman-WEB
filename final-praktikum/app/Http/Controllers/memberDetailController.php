@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\memberDetail;
 
 class memberDetailController extends Controller
 {
     public function showMemberDetail($id)
     {
-        $data = memberDetail::where('author_id', $id)->get();
-        return view ('memberDetail');
+        $data = memberDetail::where('id', $id)->get();
+        return view ('memberDetail')
+            -> with(compact('data'));
     }
 }
