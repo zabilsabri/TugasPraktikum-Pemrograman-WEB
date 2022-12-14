@@ -50,7 +50,7 @@
         <a href="/tag" class="nav-link">Tag</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/user" class="nav-link">User</a>
+        <a href="/userList" class="nav-link">User</a>
       </li>
     </ul>
 
