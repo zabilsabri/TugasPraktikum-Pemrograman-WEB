@@ -55,7 +55,7 @@
                                     <span class="px-2">-</span>
                                     <a href="#" class="text-muted">0 Comments</a>
                                 </small>
-                                <p class="my-2">{{ $item -> $description }}</p>
+                                <p class="my-2">{{ $item -> description }}</p>
                             </div>
                             
                             <div class="card-footer p-0 text-center">

@@ -9,4 +9,6 @@ class articleTag extends Model
 {
     use HasFactory;
     protected $table = 'article_tags';
+
+    
 }

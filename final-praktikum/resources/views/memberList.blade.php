@@ -1,6 +1,6 @@
 @extends('layout.user')
 @section('content')
-<table class="table table-striped">
+<table class="table table-striped" id="tableBlog">
          <thead>
             <tr>
                <th scope="col">No.</th>
@@ -13,7 +13,7 @@
          <tbody>
             @foreach($data as $index => $item)
             <tr>
-               <th>{{ $index + $data->firstItem() }}</th>
+               <th>{{ $index + 1 }}</th>
                <td>{{$item->name}}</td>
                <td>{{ $item->articles_count }} </td>
                <td>{{ $item->created_at }}</td>
@@ -22,7 +22,4 @@
             @endforeach
          </tbody>
 </table>
-   <div class="paginationButtonLink" style="display: flex; justify-content: center;">
-         {{ $data->links() }}
-   </div>
 @endsection

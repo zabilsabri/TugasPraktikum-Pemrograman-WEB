@@ -53,6 +53,10 @@ Route::group(['middleware' => ['auth', 'hakAkses:member, admin']], function(){
 
     Route::get('userList', [userListController::class , 'showUserList']);
 
+    Route::get('articleEdit/{id}', [articleController::class, 'showArticleEdit']);
+
+    Route::post('editArticle/{id}', [articleController::class, 'edit']);
+
 });
 
 Route::get('', [homePageController::class , 'showHomePage']);
