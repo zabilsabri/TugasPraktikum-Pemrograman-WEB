@@ -64,7 +64,7 @@
                         </div>
                     </div>
                     @endforeach
-                <button class="btn btn-primary btn-block my-4">See More Posts</button>
+                <a href="articleList" class="btn btn-primary btn-block my-4">See More Posts</a>
             </div>
 
             <!-- Sidebar -->
