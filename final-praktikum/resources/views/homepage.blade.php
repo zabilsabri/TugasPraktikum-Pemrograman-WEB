@@ -45,15 +45,13 @@
                         <div class="card text-center mb-5">
                             <div class="card-header p-0">                                   
                                 <div class="blog-media">
-                                    <img src="http://127.0.0.1:8000/blogTemplate/assets/imgs/blog2.jpg" alt="" class="w-100">
+                                    <img src="{{ asset('fotoArticle/'. $item->foto) }}" class="w-100" alt="foto-article">
                                     <a href="#" class="badge badge-primary">#{{ $item->category_id }}</a>        
                                 </div>  
                             </div>
                             <div class="card-body px-0">
                                 <h5 class="card-title mb-2">{{ $item->title }}</h5>    
                                 <small class="small text-muted">{{ $item -> created_at }}
-                                    <span class="px-2">-</span>
-                                    <a href="#" class="text-muted">0 Comments</a>
                                 </small>
                                 <p class="my-2">{{ $item -> description }}</p>
                             </div>

@@ -1,6 +1,8 @@
 @extends('layout.user')
 @section('content')
 <div class="container" style="margin-top: 20px;">
+<h1 class="text-center" >Article List</h1>
+
 <table class="table table-striped" id="tableBlog">
          <thead>
             <tr>
