@@ -14,7 +14,7 @@
                 </a>
                 @foreach($data as $item)
                 <a href="memberDetail/{{ $item->id }}" class="feature-post-item">
-                    <img src="{{asset('blogTemplate/assets/imgs/unknown_pic.jpg')}}" class="w-100" alt="prof-pic">
+                    <img src="{{ asset('fotoArticle/'. $item->foto) }}" alt="User profile picture" class="w-100 h-100">
                     <div class="feature-post-caption">{{$item -> name}}</div>
                 </a>
                 @endforeach

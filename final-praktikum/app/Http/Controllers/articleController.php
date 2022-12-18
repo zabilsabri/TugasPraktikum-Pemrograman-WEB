@@ -123,4 +123,9 @@ class articleController extends Controller
 
         return redirect()->to('/articles')->send()->with('success', 'Data berhasil di edit!');
     }
+
+    public function deleteArticle($id){
+        $deleted = DB::table('articles')->where('id','=', $id)->delete();
+        return redirect()->to('/articles')->send()->with('success', 'Data berhasil di hapus!');
+    }
 }

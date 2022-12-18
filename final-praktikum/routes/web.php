@@ -61,6 +61,10 @@ Route::group(['middleware' => ['auth', 'hakAkses:member, admin']], function(){
 
     Route::post('/editProfile/{id}', [profileController::class, 'editProfile']);
 
+    Route::get('articleDelete/{id}', [articleController::class, 'deleteArticle']);
+
+    Route::get('/deleteProfile/{id}', [profileController::class, 'deleteProfile']);
+
 });
 
 Route::get('', [homePageController::class , 'showHomePage']);

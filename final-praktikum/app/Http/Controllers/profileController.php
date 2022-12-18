@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Auth;
+use Illuminate\Support\Facades\DB;
+
 
 class profileController extends Controller
 {
@@ -31,5 +33,11 @@ class profileController extends Controller
 
         return redirect()->to('/profile/'.Auth::id())->send()->with('success', 'Data berhasil di edit!');
 
+    }
+
+    public function deleteProfile($id)
+    {
+        $deleted = DB::table('users')->where('id','=', $id)->delete();
+        return redirect()->to('/login')->send()->with('success', 'Data berhasil di hapus!');
     }
 }

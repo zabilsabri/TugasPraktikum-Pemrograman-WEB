@@ -114,10 +114,31 @@
                       </div>
                       <div class="form-group row">
                         <div class="offset-sm-2 col-sm-10">
-                          <button type="submit" class="btn btn-danger">Edit</button>
+                          <button type="submit" class="btn btn-warning">Edit</button>
+                          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                            Delete Profile
+                          </button>
                         </div>
                       </div>
                     </form>
+                    <!-- Modal -->
+                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Confirm Delete</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            Are You Sure You Want To Delete This Profile? All Articles, Category, Sub Category, Tag From This Profile Will Be Permanently Deleted 
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <a type="button" href="/deleteProfile/{{$item->id}}" class="btn btn-danger">Delete</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     @endforeach
                   </div>
                   <!-- /.tab-pane -->
